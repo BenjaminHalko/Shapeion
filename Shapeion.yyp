@@ -1,11 +1,12 @@
 {
   "resources": [
-    {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},"order":2,},
-    {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},"order":6,},
-    {"id":{"name":"oRectangle","path":"objects/oRectangle/oRectangle.yy",},"order":4,},
+    {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},"order":8,},
+    {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},"order":1,},
+    {"id":{"name":"sWall","path":"sprites/sWall/sWall.yy",},"order":10,},
     {"id":{"name":"Scripts","path":"scripts/Scripts/Scripts.yy",},"order":0,},
     {"id":{"name":"rGame","path":"rooms/rGame/rGame.yy",},"order":3,},
-    {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":1,},
+    {"id":{"name":"oAfter","path":"objects/oAfter/oAfter.yy",},"order":2,},
+    {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Amazon Fire","path":"options/amazonfire/options_amazonfire.yy",},
@@ -30,6 +31,7 @@
   ],
   "Folders": [
     {"folderPath":"folders/Global.yy","order":5,"resourceVersion":"1.0","name":"Global","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Player.yy","order":7,"resourceVersion":"1.0","name":"Player","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

@@ -1,0 +1,1 @@
+window_set_size(window_get_width()*3,window_get_height()*3);
