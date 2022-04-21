@@ -4,6 +4,7 @@
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},"order":1,},
     {"id":{"name":"sWall","path":"sprites/sWall/sWall.yy",},"order":10,},
     {"id":{"name":"Scripts","path":"scripts/Scripts/Scripts.yy",},"order":0,},
+    {"id":{"name":"oGlobalController","path":"objects/oGlobalController/oGlobalController.yy",},"order":11,},
     {"id":{"name":"rGame","path":"rooms/rGame/rGame.yy",},"order":3,},
     {"id":{"name":"oAfter","path":"objects/oAfter/oAfter.yy",},"order":2,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},

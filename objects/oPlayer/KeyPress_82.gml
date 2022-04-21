@@ -1,0 +1,3 @@
+/// @desc
+
+room_restart();
