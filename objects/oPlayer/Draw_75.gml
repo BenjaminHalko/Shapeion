@@ -1,0 +1,1 @@
+draw_sprite(sprite_index,0,x*3,y*3);
