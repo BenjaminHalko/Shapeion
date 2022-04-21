@@ -29,6 +29,17 @@ function Wave(_from, _to, _duration, _offset) {
 	return _from + a4 + sin((((current_time * 0.001) + _duration * _offset) / _duration) * (pi*2)) * a4;
 }
 
-function createGlowSurface() {
-	if(!surface_exists(global.glowSurface)) global.glowSurface = surface_create(room_width,room_height);
+function scale_canvas(_bw,_bh,_cw,_ch) {
+var _aspect = (_bw / _bh);
+
+if ((_cw / _aspect) > _ch)
+    {
+    window_set_size((_ch *_aspect), _ch);
+    }
+else
+    {
+    window_set_size(_cw, (_cw / _aspect));
+
+    }
+	window_center();
 }

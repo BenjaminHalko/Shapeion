@@ -93,8 +93,8 @@
     "resourceType": "GMNineSliceData",
   },
   "parent": {
-    "name": "Shapeion",
-    "path": "Shapeion.yyp",
+    "name": "Wall",
+    "path": "folders/Wall.yy",
   },
   "resourceVersion": "1.0",
   "name": "sWall",
