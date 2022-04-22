@@ -6,7 +6,9 @@ if(!surface_exists(surface)) {
 	
 	surface = surface_create(room_width,room_height);
 	surface_set_target(surface);
-	draw_sprite_ext(sWall,0,0,0,room_width/8,room_height/8,0,c_white,1);
+	//draw_sprite_ext(sWall,0,0,0,room_width/8,room_height/8,0,c_white,1);
+	draw_set_color(oGlobalController.currentColor);
+	draw_rectangle(0,0,room_width,room_height,false);
 	gpu_set_blendmode(bm_subtract);
 	draw_set_color(c_white);
 	draw_primitive_begin(pr_trianglelist);
@@ -61,7 +63,7 @@ for(var j = 0; j < array_length(shapes); j++) {
 		
 		if(finalZ == 1) shapes[j].percent = ApproachFade(shapes[j].percent,_pointIn == j,0.01,0.8);
 		
-		draw_set_color(c_lime);
+		draw_set_color(make_color_hsv(color_get_hue(oGlobalController.currentColor)+128,255,255));
 		if(shapes[j].percent > 1/shapes[j].num*(shapes[j].num-i-1)) {
 			var _percent = min(1,shapes[j].percent*shapes[j].num-(shapes[j].num-i-1));
 			draw_line_width(_x2Final,_y2Final,lerp(_x2Final,_xFinal,_percent),lerp(_y2Final,_yFinal,_percent),2);

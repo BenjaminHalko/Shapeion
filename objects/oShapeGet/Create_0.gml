@@ -9,4 +9,4 @@ curve = animcurve_get_channel(ShapeGetCurve,0);
 
 correct = true;
 
-thing = choose("SAD","BRUH","CHEESE");
+thing = choose("SAD","CHEESE");
