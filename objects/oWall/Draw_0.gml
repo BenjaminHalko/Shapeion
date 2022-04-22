@@ -39,6 +39,12 @@ for(var j = 0; j < array_length(shapes); j++) {
 			}
 		}
 	}
+	
+	if(finalZ == 1) shapes[j].percent = ApproachFade(shapes[j].percent,_pointIn == j,0.04,0.5);
+	
+	var _shapeArray = [];
+	var _shapeArrayCol = [];
+
 	for(var i = 0; i < shapes[j].num; i++) {
 		var _x = shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle);
 		var _y = shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle);
@@ -55,32 +61,33 @@ for(var j = 0; j < array_length(shapes); j++) {
 		var _y2Final = room_height*(1-_z)/2+_y2*_z;
 		
 		draw_set_color(c_grey);
-		if(point_in_rectangle(_x-1,_y-1,0,0,room_width,room_height))
-			draw_line(_xFinal-1,_yFinal-1,room_width*(1-min(1,z))/2+_x*min(1,z)-1,room_height*(1-min(1,z))/2+_y*min(1,z)-1);
-		draw_set_color(c_white);
-		if(j == 0) draw_set_color(c_aqua);
-		draw_line_width(_xFinal,_yFinal,_x2Final,_y2Final,2);
+		draw_line(_xFinal-1,_yFinal-1,room_width*(1-min(1,z))/2+_x*min(1,z)-1,room_height*(1-min(1,z))/2+_y*min(1,z)-1);
 		
-		if(finalZ == 1) shapes[j].percent = ApproachFade(shapes[j].percent,_pointIn == j,0.01,0.8);
+		array_push(_shapeArray,[_xFinal,_yFinal,_x2Final,_y2Final]);
 		
-		draw_set_color(make_color_hsv(color_get_hue(oGlobalController.currentColor)+128,255,255));
 		if(shapes[j].percent > 1/shapes[j].num*(shapes[j].num-i-1)) {
 			var _percent = min(1,shapes[j].percent*shapes[j].num-(shapes[j].num-i-1));
-			draw_line_width(_x2Final,_y2Final,lerp(_x2Final,_xFinal,_percent),lerp(_y2Final,_yFinal,_percent),2);
-		}
-		
-		if(shapes[j].percent == 1) {
+			array_push(_shapeArrayCol,[_x2Final,_y2Final,lerp(_x2Final,_xFinal,_percent),lerp(_y2Final,_yFinal,_percent)]);
+		}		
+	}
+	
+	draw_set_color(c_white);
+	if(j == 0 && z < 1) draw_set_color(c_aqua);
+	draw_line_shadow(_shapeArray);
+	draw_set_color(make_color_hsv(color_get_hue(oGlobalController.currentColor)+128,255,255));
+	for(var i = 0; i < array_length(_shapeArrayCol); i++) {
+		draw_line_width(_shapeArrayCol[i][0],_shapeArrayCol[i][1],_shapeArrayCol[i][2],_shapeArrayCol[i][3],2);
+	}
+	
+	if(shapes[j].percent == 1) {
 			fast = true;
 			oPlayer.lock = [shapes[j].x,shapes[j].y];
 			oPlayer.locked = true;
 		}
-	}
 }
 draw_set_alpha(1);
 
-if(z+spd >= 1) 
-
-if(z+spd >= 1 && z < 1) {
+if(z >= 1 && depth != -10000) {
 	depth = -10000;
 	
 	if(_pointIn != -1) {
@@ -90,11 +97,27 @@ if(z+spd >= 1 && z < 1) {
 			size = other.size;
 			correct = _pointIn == 0;
 		}
+	} else {
+		for(var i = 1; i < array_length(shapes); i++) {
+			with(instance_create_depth(shapes[i].x,shapes[i].y,depth,oShapeGet)) {
+				num = other.shapes[i].num;
+				angle = other.shapes[i].angle;
+				size = other.size;
+				correct = false;
+			}	
+		}
 	}
 	if(_pointIn != 0) {
-		oPlayer.blink = 20;	
+		with(instance_create_depth(shapes[0].x,shapes[0].y,depth,oShapeGet)) {
+			num = other.shapes[0].num;
+			angle = other.shapes[0].angle;
+			size = other.size;
+			correct = -1;
+		}
+		oGlobalController.tempStop = true;
+		oPlayer.damage = 1;
 		global.lives--;
-		if(global.lives >= 0) oGUI.score[global.lives] = 8;
+		if(global.lives > 0) oPlayer.blink = 14;
 	}
 }
 
@@ -102,7 +125,7 @@ if(z >= 1+_fadeTime) {
 	instance_destroy();
 	oPlayer.locked = false;
 	oGlobalController.lastColor = oGlobalController.currentColor;
-	oGlobalController.currentColor = make_color_hsv(irandom(255),255,255);
 	oGlobalController.colorPercent = 0;
-	instance_create_depth(0,0,layer_get_depth(layer_get_id("Wall")),oWall);
+	if(global.lives <= 0) oGlobalController.currentColor = c_grey;
+	else oGlobalController.currentColor = make_color_hsv(irandom(255),255,255);
 }

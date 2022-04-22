@@ -1,12 +1,19 @@
 /// @desc
 
-global.expandSpeed = 0.005;
-global.smallStart = 16;
+randomize();
+
+global.expandSpeed = 0.001;
+global.smallStart = 14;
 
 global.score = 0;
-global.hiScore = 0;
+if(file_exists("score")) {
+	var _file = file_text_open_read("score");
+	global.hiScore = file_text_read_real(_file);
+	file_text_close(_file);
+	if(is_nan(global.hiScore)) global.hiScore = 0;
+} else global.hiScore = 0;
 
-global.lives = 3;
+global.lives = 6;
 
 rectangles = [];
 
@@ -21,4 +28,10 @@ currentColor = make_color_hsv(irandom(255),255,255);
 
 colorPercent = 1;
 
-col = 0;
+start = false;
+
+tempStop = false;
+title = true;
+
+blink = false;
+alarm[2] = 30;

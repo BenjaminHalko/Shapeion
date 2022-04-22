@@ -1,1 +1,3 @@
-scale = array_create(3,1);
+scale = array_create(global.lives,4);
+
+start = 8;

@@ -1,0 +1,9 @@
+oGUI.start = 6;
+locked = true;
+oGlobalController.start = false;
+global.score = 0;
+oGUI.alarm[0] = 15;
+lock = [room_width/2,room_height/2+64];
+oGlobalController.lastColor = oGlobalController.currentColor;
+oGlobalController.colorPercent = 0;
+oGlobalController.currentColor = make_color_hsv(irandom(255),255,255);

@@ -1,9 +1,8 @@
-
 shapes = [];
 
 size = 100;
 
-repeat(3) {
+repeat(2+(global.score >= 1000)+(global.score >= 3000)) {
 	var _x, _y;
 	_x = -1;
 	while(_x == -1) {
@@ -32,7 +31,7 @@ surface = noone;
 
 z = 0;
 
-spd = 0.02;
+spd = max(global.expandSpeed,0.01);
 
 finalZ = -0.1;
 

@@ -3,9 +3,6 @@
 var _w = room_width/global.smallStart;
 var _h = room_height/global.smallStart;
 
-//draw_set_color(make_color_hsv(irandom(255),255,255));
-//draw_rectangle(0,0,room_width,room_height,0);
-
 colorPercent = Approach(colorPercent,1,0.1);
 draw_set_color(merge_color(lastColor,currentColor,colorPercent));
 draw_line(0,0,room_width/2-_w,room_height/2-_h);
@@ -20,5 +17,16 @@ for(var i = 0; i < array_length(rectangles); i++) {
 	if(rectangles[i] > 1) {
 		array_delete(rectangles,i,1);
 		i--;
+	}
+}
+
+if(title) {
+	draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50,2,2,0,c_white,1);
+	if(blink) {
+		draw_set_color(c_white);
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		draw_set_font(fontGui);
+		draw_text(room_width/2,room_height/4*3,"CLICK ANYWHERE");	
 	}
 }
