@@ -21,7 +21,10 @@ for(var i = 0; i < array_length(rectangles); i++) {
 }
 
 if(title) {
-	draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50,2,2,0,c_white,titleAlpha);
+	var _col = color_get_hue(merge_color(lastColor,currentColor,colorPercent))+128;
+	if(_col > 255) _col -= 255;
+	draw_sprite_ext(sTitle,1,room_width/2,room_height/2-50,4,4,0,make_color_hsv(_col,255,255),titleAlpha);
+	draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50,4,4,0,c_white,titleAlpha);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_font(fontGui);
@@ -40,10 +43,12 @@ if(title) {
 			var _xPos = room_width/2-_drawX*(1-j*2)*(1-startPercent*(global.hardMode == j));
 		
 			var _pointIn = false;
-			for(var i = 0; i < _num; i++) {
-				if(point_in_triangle(mouse_x,mouse_y,_xPos,_drawY,_xPos+lengthdir_x(_size,360/_num*i+_angle),_drawY+lengthdir_y(_size,360/_num*i+_angle),_xPos+lengthdir_x(_size,360/_num*(i+1)+_angle),_drawY+lengthdir_y(_size,360/_num*(i+1)+_angle))) {
-					_pointIn = true;
-					break;
+			if(challengeCurrent == undefined or challengeCurrent == global.challengeID[j]) {
+				for(var i = 0; i < _num; i++) {
+					if(point_in_triangle(mouse_x,mouse_y,_xPos,_drawY,_xPos+lengthdir_x(_size,360/_num*i+_angle),_drawY+lengthdir_y(_size,360/_num*i+_angle),_xPos+lengthdir_x(_size,360/_num*(i+1)+_angle),_drawY+lengthdir_y(_size,360/_num*(i+1)+_angle))) {
+						_pointIn = true;
+						break;
+					}
 				}
 			}
 		
@@ -65,15 +70,16 @@ if(title) {
 			
 				if(menuPercent[j] == 1 and global.hardMode == -1) {
 					global.hardMode = j;
-					blinkSpd = 5;
 					alarm[2] = blinkSpd;
 					alarm[4] = 60;
+					audio_play_sound(snStart,1,false);
 				}
 			}
-
+			
+			var _col = [c_grey,c_white];
 			if(global.hardMode != j or blink) {
-				draw_set_alpha(1-startPercent*(global.hardMode != j));
-				draw_set_color(c_white);
+				draw_set_alpha((1-startPercent*(global.hardMode != j))*(.5+.5*(challengeCurrent == undefined or challengeCurrent == global.challengeID[j])));
+				draw_set_color(_col[challengeCurrent == undefined or challengeCurrent == global.challengeID[j]]);
 				if(j == 0) draw_text(_xPos,_drawY,"NORMAL");
 				else draw_text(_xPos,_drawY,"HARD");
 				draw_line_shadow(_shapeArray);
@@ -84,11 +90,15 @@ if(title) {
 			draw_line_shadow(_shapeArrayCol,4);
 		}
 	}
-	
-	if(blink) {
-		if(newrecord) {
-			draw_set_color(c_red);
-			draw_text(room_width/2,32,"NEW RECORD");
-		}
+}
+
+if(oGUI.start % 2) {
+	if(newrecord) {
+		draw_set_color(c_red);
+		draw_text(room_width/2,64,"NEW RECORD");
 	}
 }
+
+draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
+draw_sprite(sBack,0,8,room_height-8)
+draw_set_alpha(1);

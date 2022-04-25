@@ -12,3 +12,5 @@ curveWrong = animcurve_get_channel(ShapeGetCurve,1);
 correct = false;
 
 blink = 20;
+
+points = 0;

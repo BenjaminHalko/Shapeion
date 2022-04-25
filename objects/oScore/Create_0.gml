@@ -1,2 +1,1 @@
-amount = "+100";
-global.score += 100;
+amount = "";

@@ -64,7 +64,9 @@ else {
 
 
 if(percent >= 1) {
-	if(correct and instance_exists(oPlayer)) instance_create_depth(x,y-20,depth,oScore);
-	else if(correct == -1) oGlobalController.tempStop = false;
+	if(correct and instance_exists(oPlayer)) {
+		with(instance_create_depth(x,y-20,depth,oScore)) amount = "+"+string(other.points);
+		global.score += points;
+	} else if(correct == -1) oGlobalController.tempStop = false;
 	instance_destroy();
 }

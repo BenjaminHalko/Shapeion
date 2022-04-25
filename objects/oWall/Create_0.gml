@@ -47,3 +47,5 @@ spd = max(global.expandSpeed,0.01);
 finalZ = -0.1;
 
 fast = false;
+
+points = 200;

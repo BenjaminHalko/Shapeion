@@ -11,4 +11,6 @@ else {
 	oGlobalController.lastColor = oGlobalController.currentColor;
 	oGlobalController.colorPercent = 0;
 	oGlobalController.currentColor = make_color_hsv(irandom(255),255,255);
+	oGlobalController.newrecord = false;
+	audio_play_sound(snReady,1,false);
 }

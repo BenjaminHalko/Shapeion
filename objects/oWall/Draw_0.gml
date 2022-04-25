@@ -39,7 +39,7 @@ for(var j = 0; j < array_length(shapes); j++) {
 		}
 	}
 	
-	if(finalZ == 1) shapes[j].percent = ApproachFade(shapes[j].percent,_pointIn == j,0.04,0.5);
+	if(finalZ == 1) shapes[j].percent = ApproachFade(shapes[j].percent,_pointIn == j,0.04,0.7);
 	
 	var _shapeArray = [];
 	var _shapeArrayCol = [];
@@ -88,6 +88,8 @@ for(var j = 0; j < array_length(shapes); j++) {
 }
 draw_set_alpha(1);
 
+if(_pointIn != 0 and finalZ == 1) points = max(points-global.expandSpeed*300,50);	
+
 if(z >= 1 && depth != -10000) {
 	depth = -10000;
 	
@@ -97,6 +99,7 @@ if(z >= 1 && depth != -10000) {
 			angle = other.shapes[_pointIn].angle;
 			size = other.size;
 			correct = _pointIn == 0;
+			points = round(other.points);
 		}
 	} else {
 		for(var i = 1; i < array_length(shapes); i++) {
