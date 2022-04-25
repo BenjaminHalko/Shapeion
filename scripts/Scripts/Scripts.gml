@@ -49,3 +49,9 @@ function draw_line_shadow(_array,_width=2,_col=c_black) {
 	for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+2,c_black,c_black);
 	for(var i = 0; i < array_length(_array); i++) draw_line_width(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width);
 }
+
+function setColorOpposite() {
+	var _col = color_get_hue(oGlobalController.currentColor)+128;
+	if(_col > 255) _col -= 255;
+	draw_set_color(make_color_hsv(_col,255,255));
+}

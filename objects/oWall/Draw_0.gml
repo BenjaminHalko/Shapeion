@@ -6,7 +6,6 @@ if(!surface_exists(surface)) {
 	
 	surface = surface_create(room_width,room_height);
 	surface_set_target(surface);
-	//draw_sprite_ext(sWall,0,0,0,room_width/8,room_height/8,0,c_white,1);
 	draw_set_color(oGlobalController.currentColor);
 	draw_rectangle(0,0,room_width,room_height,false);
 	gpu_set_blendmode(bm_subtract);
@@ -33,7 +32,7 @@ draw_set_alpha(min(1,(_fadeTime-max(0,z-1))/_fadeTime));
 for(var j = 0; j < array_length(shapes); j++) {
 	if(_pointIn == -1) {
 		for(var i = 0; i < shapes[j].num; i++) {
-			if(point_in_triangle(oPlayer.x,oPlayer.y,shapes[j].x,shapes[j].y,shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].x+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle))) {
+			if(point_in_triangle(mouse_x,mouse_y,shapes[j].x,shapes[j].y,shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].x+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle))) {
 				_pointIn = j;
 				break;
 			}
@@ -60,8 +59,8 @@ for(var j = 0; j < array_length(shapes); j++) {
 		var _x2Final = room_width*(1-_z)/2+_x2*_z;
 		var _y2Final = room_height*(1-_z)/2+_y2*_z;
 		
-		draw_set_color(c_grey);
-		draw_line(_xFinal-1,_yFinal-1,room_width*(1-min(1,z))/2+_x*min(1,z)-1,room_height*(1-min(1,z))/2+_y*min(1,z)-1);
+		//draw_set_color(c_grey);
+		//draw_line(_xFinal-1,_yFinal-1,room_width*(1-min(1,z))/2+_x*min(1,z)-1,room_height*(1-min(1,z))/2+_y*min(1,z)-1);
 		
 		array_push(_shapeArray,[_xFinal,_yFinal,_x2Final,_y2Final]);
 		
@@ -72,12 +71,14 @@ for(var j = 0; j < array_length(shapes); j++) {
 	}
 	
 	draw_set_color(c_white);
-	if(j == 0 && z < 1) draw_set_color(c_aqua);
 	draw_line_shadow(_shapeArray);
-	draw_set_color(make_color_hsv(color_get_hue(oGlobalController.currentColor)+128,255,255));
+	setColorOpposite();
+	draw_line_shadow(_shapeArrayCol,4);
+	/*
 	for(var i = 0; i < array_length(_shapeArrayCol); i++) {
-		draw_line_width(_shapeArrayCol[i][0],_shapeArrayCol[i][1],_shapeArrayCol[i][2],_shapeArrayCol[i][3],2);
+		draw_line_width(_shapeArrayCol[i][0],_shapeArrayCol[i][1],_shapeArrayCol[i][2],_shapeArrayCol[i][3],4);
 	}
+	*/
 	
 	if(shapes[j].percent == 1) {
 			fast = true;

@@ -1,2 +1,2 @@
 blink = !blink;
-alarm[2] = 30;
+alarm[2] = blinkSpd;

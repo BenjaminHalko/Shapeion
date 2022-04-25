@@ -17,11 +17,12 @@ else if(y < room_height+64) {
 		oGUI.alarm[1] = 30;
 		oGUI.start = 6;
 		global.expandSpeed = 0.005;
-		if(global.score > global.hiScore) {
-			global.hiScore = global.score;
-			var _file = file_text_open_write("score");
-			file_text_write_real(_file,global.score);
-			file_text_close(_file);
+		if(global.score > global.hiScore[global.hardMode]) {
+			global.hiScore[global.hardMode] = global.score;
+			var _mode = ["normal","hard"];
+			ini_open("score.ini");
+			ini_write_real("score",_mode[global.hardMode],global.score);
+			ini_close();
 		}
 	}
 }

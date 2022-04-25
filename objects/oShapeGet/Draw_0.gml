@@ -1,13 +1,15 @@
 /// @desc
 
 if(correct) {
-	draw_set_color(c_white);
 	var _size = size*animcurve_channel_evaluate(curveCorrect,percent);
 	var _angle = min(1,animcurve_channel_evaluate(curveCorrect,percent))*180+angle+180;
 
-	x = lerp(xstart,oPlayer.x,1-min(1,animcurve_channel_evaluate(curveCorrect,percent)));
-	y = lerp(ystart,oPlayer.y,1-min(1,animcurve_channel_evaluate(curveCorrect,percent)));
-
+	if(instance_exists(oPlayer)) {
+		draw_set_color(c_white);
+		x = lerp(xstart,oPlayer.x,1-min(1,animcurve_channel_evaluate(curveCorrect,percent)));
+		y = lerp(ystart,oPlayer.y,1-min(1,animcurve_channel_evaluate(curveCorrect,percent)));
+	} else setColorOpposite();
+	
 	var _shapeArray = [];
 	for(var i = 0; i < num; i++) {
 		array_push(_shapeArray,[x+lengthdir_x(_size,360/num*i+_angle),y+lengthdir_y(_size,360/num*i+_angle),
@@ -62,7 +64,7 @@ else {
 
 
 if(percent >= 1) {
-	if(correct) instance_create_depth(x,y-20,depth,oScore);
+	if(correct and instance_exists(oPlayer)) instance_create_depth(x,y-20,depth,oScore);
 	else if(correct == -1) oGlobalController.tempStop = false;
 	instance_destroy();
 }

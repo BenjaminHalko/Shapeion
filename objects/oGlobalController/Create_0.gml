@@ -2,17 +2,18 @@
 
 randomize();
 
-global.expandSpeed = 0.001;
+global.expandSpeed = 0;
 global.smallStart = 14;
 
-global.score = 0;
-if(file_exists("score")) {
-	var _file = file_text_open_read("score");
-	global.hiScore = file_text_read_real(_file);
-	file_text_close(_file);
-	if(is_nan(global.hiScore)) global.hiScore = 0;
-} else global.hiScore = 0;
+global.hardMode = -1;
 
+global.score = 0;
+ini_open("score.ini");
+global.hiScore = [
+ini_read_real("score","normal",0),
+ini_read_real("score","hard",0)];
+ini_close();
+	
 global.lives = 6;
 
 rectangles = [];
@@ -21,9 +22,9 @@ alarm[0] = 1;
 
 width = browser_width;
 height = browser_height;
-scale_canvas(960,540,width,height);
+if(os_browser != browser_not_a_browser) scale_canvas(960,540,width,height);
 
-lastColor = make_color_hsv(irandom(255),255,255);
+lastColor = c_black;
 currentColor = make_color_hsv(irandom(255),255,255);
 
 colorPercent = 1;
@@ -34,4 +35,14 @@ tempStop = false;
 title = true;
 
 blink = false;
-alarm[2] = 30;
+blinkSpd = 5;
+newrecord = false;
+
+menuPercent = [0,0];
+
+startPercent = 0;
+titleAlpha = 1;
+
+menuFadeOut = false;
+
+if(!audio_is_playing(mMusic)) audio_play_sound(mMusic,1,true);

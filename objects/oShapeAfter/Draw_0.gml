@@ -1,4 +1,5 @@
-draw_set_color(c_white);
+if(instance_exists(oPlayer)) draw_set_color(c_white);
+else setColorOpposite();
 draw_set_alpha(image_alpha);
 draw_line_shadow(shapeArray);
 draw_set_alpha(1)
