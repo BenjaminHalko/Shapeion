@@ -14,8 +14,8 @@
   "soundFile": "snStart.wav",
   "duration": 1.288277,
   "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+    "name": "Sounds",
+    "path": "folders/Global/Sounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "snStart",

@@ -6,6 +6,11 @@ if(oGUI.start != 0) {
 	x = room_width/2;
 	y = lerp(room_height+50,Wave(lock[1]-2,lock[1]+2,0.5,0),lockPercent);
 } else if(global.lives > 0) {
+	if(!locked and mouse_check_button_pressed(mb_left)) {
+		lock = [x,y-Wave(-2,2,0.5,0)];
+		lockPercent = 0;
+	}
+	
 	x = lerp(mouse_x,lock[0],lockPercent);
 	y = lerp(Wave(mouse_y-2,mouse_y+2,0.5,0),Wave(lock[1]-2,lock[1]+2,0.5,0),lockPercent);
 }

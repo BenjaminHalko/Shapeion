@@ -14,8 +14,8 @@
   "soundFile": "snGo.wav",
   "duration": 0.471344,
   "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+    "name": "Sounds",
+    "path": "folders/Global/Sounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "snGo",

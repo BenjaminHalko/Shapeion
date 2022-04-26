@@ -14,8 +14,8 @@
   "soundFile": "snGameOver.wav",
   "duration": 0.817656,
   "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+    "name": "Sounds",
+    "path": "folders/Global/Sounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "snGameOver",

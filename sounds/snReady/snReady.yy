@@ -14,8 +14,8 @@
   "soundFile": "snReady.wav",
   "duration": 0.408156,
   "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+    "name": "Sounds",
+    "path": "folders/Global/Sounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "snReady",
