@@ -5,6 +5,7 @@ global.challengeID = [
 "cbe0c54a-609d-4fad-bac3-13a568e45050"];
 
 #macro OPERA (os_type == os_operagx)
+#macro MAXLIVES 6
 
 randomize();
 
@@ -38,7 +39,7 @@ if(OPERA) {
 	ini_close();
 }
 	
-global.lives = 6;
+global.lives = MAXLIVES;
 
 rectangles = [];
 

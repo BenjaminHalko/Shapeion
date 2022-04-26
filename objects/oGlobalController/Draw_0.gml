@@ -73,6 +73,7 @@ if(title) {
 					alarm[2] = blinkSpd;
 					alarm[4] = 60;
 					audio_play_sound(snStart,1,false);
+					oGUI.hiScoreView = global.hardMode;
 				}
 			}
 			
