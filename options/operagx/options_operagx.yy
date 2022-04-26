@@ -1,6 +1,6 @@
 {
-  "option_operagx_version": "0.0.0.10",
-  "option_operagx_next_version": "0.0.0.11",
+  "option_operagx_version": "0.0.0.11",
+  "option_operagx_next_version": "0.0.0.12",
   "option_operagx_game_name": "Shapeion",
   "option_operagx_interpolate_pixels": false,
   "option_operagx_scale": 0,
@@ -10,7 +10,7 @@
   "option_operagx_team_name": "Benjamin Halko",
   "option_operagx_editUrl": "https://dc.gxc.gg/home/games/game/51777215-67e8-4350-adc0-11a5a8372a69/edit",
   "option_operagx_internalShareUrl": "https://gxc.gg",
-  "option_operagx_publicShareUrl": "",
+  "option_operagx_publicShareUrl": "https://gxc.gg",
   "resourceVersion": "1.0",
   "name": "operagx",
   "tags": [],
