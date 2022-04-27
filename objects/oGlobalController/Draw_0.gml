@@ -3,6 +3,10 @@
 var _w = room_width/global.smallStart;
 var _h = room_height/global.smallStart;
 
+if(codeActivated) {
+	currentColor = make_color_hsv(irandom(255),255,255);
+	colorPercent = 1;
+}
 colorPercent = Approach(colorPercent,1,0.05);
 draw_set_color(merge_color(lastColor,currentColor,colorPercent));
 draw_line(0,0,room_width/2-_w,room_height/2-_h);

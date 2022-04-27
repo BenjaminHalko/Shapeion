@@ -48,3 +48,11 @@ if(point_in_rectangle(mouse_x,mouse_y,8,room_height-40,40,room_height-8)) {
 		alarm[4] = -1;
 	}
 } else backAlpha = ApproachFade(backAlpha,0,0.1,0.8);
+
+if(!codeActivated and keyboard_lastkey != -1) {
+	if(keyboard_lastkey == secretCode[codeNum]) {
+		codeNum++;
+		if(array_length(secretCode) == codeNum) codeActivated = true;
+	} else codeNum = 0;	
+	keyboard_lastkey = -1;
+}

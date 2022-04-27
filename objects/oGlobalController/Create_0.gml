@@ -18,6 +18,10 @@ global.score = 0;
 
 challengeCurrent = undefined;
 
+secretCode = [vk_up,vk_up,vk_down,vk_down,vk_left,vk_right,vk_left,vk_right];
+codeNum = 0;
+codeActivated = false;
+
 if(OPERA) {
 	challengeCurrent = gxc_get_query_param("challenge");
 	global.hiScore = [0,0];

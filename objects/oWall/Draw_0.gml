@@ -3,10 +3,9 @@ var _fadeTime = 0.05;
 var _pointIn = -1;
 
 if(!surface_exists(surface)) {
-	
 	surface = surface_create(room_width,room_height);
 	surface_set_target(surface);
-	draw_set_color(oGlobalController.currentColor);
+	draw_set_color(c_white);
 	draw_rectangle(0,0,room_width,room_height,false);
 	gpu_set_blendmode(bm_subtract);
 	draw_set_color(c_white);
@@ -26,7 +25,7 @@ if(!surface_exists(surface)) {
 if(z >= 1) z += 0.003;
 else z = min(1,z+spd);
 
-draw_surface_ext(surface,room_width*max(0,1-z)/2,room_height*max(0,1-z)/2,min(1,z),min(1,z),0,merge_color(c_black,c_white,min(1,z*2)),min(1,(_fadeTime-max(0,z-1))/_fadeTime));
+draw_surface_ext(surface,room_width*max(0,1-z)/2,room_height*max(0,1-z)/2,min(1,z),min(1,z),0,merge_color(c_black,oGlobalController.currentColor,min(1,z*2)),min(1,(_fadeTime-max(0,z-1))/_fadeTime));
 
 draw_set_alpha(min(1,(_fadeTime-max(0,z-1))/_fadeTime));
 for(var j = 0; j < array_length(shapes); j++) {
@@ -81,10 +80,11 @@ for(var j = 0; j < array_length(shapes); j++) {
 	*/
 	
 	if(shapes[j].percent == 1) {
-			fast = true;
-			oPlayer.lock = [shapes[j].x,shapes[j].y];
-			oPlayer.locked = true;
-		}
+		fast = true;
+		oPlayer.lock = [shapes[j].x,shapes[j].y];
+		oPlayer.locked = true;
+		shapeChoosen = j;
+	}
 }
 draw_set_alpha(1);
 
@@ -93,12 +93,14 @@ if(_pointIn != 0 and finalZ == 1) points = max(points-global.expandSpeed*300,50)
 if(z >= 1 && depth != -10000) {
 	depth = -10000;
 	
-	if(_pointIn != -1) {
-		with(instance_create_depth(shapes[_pointIn].x,shapes[_pointIn].y,depth,oShapeGet)) {
-			num = other.shapes[_pointIn].num;
-			angle = other.shapes[_pointIn].angle;
+	if(shapeChoosen == -1) shapeChoosen = _pointIn;
+	
+	if(shapeChoosen != -1) {
+		with(instance_create_depth(shapes[shapeChoosen].x,shapes[shapeChoosen].y,depth,oShapeGet)) {
+			num = other.shapes[other.shapeChoosen].num;
+			angle = other.shapes[other.shapeChoosen].angle;
 			size = other.size;
-			correct = _pointIn == 0;
+			correct = other.shapeChoosen == 0;
 			points = round(other.points);
 		}
 	} else {
@@ -111,7 +113,7 @@ if(z >= 1 && depth != -10000) {
 			}	
 		}
 	}
-	if(_pointIn != 0) {
+	if(shapeChoosen != 0) {
 		with(instance_create_depth(shapes[0].x,shapes[0].y,depth,oShapeGet)) {
 			num = other.shapes[0].num;
 			angle = other.shapes[0].angle;

@@ -2,9 +2,9 @@ shapes = [];
 
 size = 120-20*global.hardMode;
 
-var _shapeArray = [3,4,6,5,8,7,10,9];
-var _soundArray = [snTriangle,snSquare,snHexagon,snPentagon,snOctagon,snSeptagon,snDecagon,snNonagon];
-var _shapeTextArray = ["TRIANGLE","SQUARE","HEXAGON","PENTAGON","OCTAGON","SEPTAGON","DECAGON","NONAGON"];
+var _shapeArray = [3,4,6,5,8,7];
+var _soundArray = [snTriangle,snSquare,snHexagon,snPentagon,snOctagon,snSeptagon];
+var _shapeTextArray = ["TRIANGLE","SQUARE","HEXAGON","PENTAGON","OCTAGON","SEPTAGON"];
 
 var _shapeNum = -1;
 
@@ -58,3 +58,4 @@ finalZ = -0.1;
 fast = false;
 
 points = 200;
+shapeChoosen = -1;
