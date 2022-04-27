@@ -31,7 +31,7 @@ draw_set_alpha(min(1,(_fadeTime-max(0,z-1))/_fadeTime));
 for(var j = 0; j < array_length(shapes); j++) {
 	if(_pointIn == -1) {
 		for(var i = 0; i < shapes[j].num; i++) {
-			if(point_in_triangle(mouse_x,mouse_y,shapes[j].x,shapes[j].y,shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].x+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle))) {
+			if(holding() and point_in_triangle(mouse_x,mouse_y,shapes[j].x,shapes[j].y,shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].x+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle))) {
 				_pointIn = j;
 				break;
 			}

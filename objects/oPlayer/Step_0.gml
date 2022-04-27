@@ -8,7 +8,7 @@ if(oGUI.start != 0) {
 } else if(global.lives > 0) {
 	if(!locked and mouse_check_button_pressed(mb_left)) {
 		lock = [x,y-Wave(-2,2,0.5,0)];
-		lockPercent = 0;
+		lockPercent = 1;
 	}
 	
 	x = lerp(mouse_x,lock[0],lockPercent);

@@ -55,3 +55,7 @@ function setColorOpposite() {
 	if(_col > 255) _col -= 255;
 	draw_set_color(make_color_hsv(_col,255,255));
 }
+
+function holding() {
+	return (!MOBILE or mouse_check_button(mb_left))
+}
