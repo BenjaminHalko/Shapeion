@@ -8,6 +8,14 @@ global.challengeID = [
 #macro MOBILE (os_type == os_android or os_type == os_ios)
 #macro MAXLIVES 6
 
+#macro WIDTH camera_get_view_width(view_camera[0])
+#macro HEIGHT camera_get_view_height(view_camera[0])
+
+#macro xMin (room_width-WIDTH)/2
+#macro yMin (room_height-HEIGHT)/2
+#macro xMax (room_width-xMin)
+#macro yMax (room_height-yMin)
+
 randomize();
 
 global.expandSpeed = 0;
@@ -50,9 +58,15 @@ rectangles = [];
 
 alarm[0] = 1;
 
-width = browser_width;
-height = browser_height;
-if(os_browser != browser_not_a_browser) scale_canvas(960,540,width,height);
+
+if(os_browser != browser_not_a_browser) {
+	width = browser_width;
+	height = browser_height;
+	scale_canvas(960,540,width,height);
+} else {
+	width = window_get_width();
+	height = window_get_height();	
+}
 
 lastColor = c_black;
 currentColor = make_color_hsv(irandom(255),255,255);

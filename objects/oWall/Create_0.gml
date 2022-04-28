@@ -17,8 +17,8 @@ while(array_length(shapes) < min(5,2+(global.score >= 1000)+(global.score >= 300
 		if(_attempt > 100) {
 			shapes = [];
 		}
-		_x = irandom_range(size,room_width-size);
-		_y = irandom_range(size,room_height-size);
+		_x = irandom_range(xMin+size,xMax-size);
+		_y = irandom_range(yMin+size,yMax-size);
 		
 		_index = irandom(min(5,3+(global.score >= 2000)+(global.score >= 8000)+global.hardMode*2));
 		var _shape = _shapeArray[_index];

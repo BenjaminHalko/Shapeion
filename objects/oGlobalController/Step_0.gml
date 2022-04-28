@@ -1,10 +1,21 @@
-if(os_browser != browser_not_a_browser) and (browser_width != width || browser_height != height)
-{
-	width = browser_width;
-	height = browser_height;
-	scale_canvas(960,540,width,height);
+if(os_browser != browser_not_a_browser) {
+	if(browser_width != width || browser_height != height)
+	{
+		width = browser_width;
+		height = browser_height;
+		scale_canvas();
 	
+	}
+} else {
+	if(window_get_width() != width || window_get_height() != height)
+	{
+		width = window_get_width();
+		height = window_get_height();
+		ResizeScreen();
+	}
 }
+
+
 if(title) {
 	startPercent = ApproachFade(startPercent,global.hardMode != -1,0.2,0.8);
 	if(alarm[3] <= 0 and startPercent == 0) alarm[3] = room_speed*5;
@@ -21,7 +32,7 @@ if(title) {
 
 global.expandSpeed = 0.001+0.0001*global.score/100+0.006*global.hardMode;
 
-if(point_in_rectangle(mouse_x,mouse_y,8,room_height-40,40,room_height-8)) {
+if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-40,xMin+40,yMax-8)) {
 	backAlpha = ApproachFade(backAlpha,1,0.1,0.8);
 	if(mouse_check_button_pressed(mb_left)) {
 		instance_destroy(oPlayer);

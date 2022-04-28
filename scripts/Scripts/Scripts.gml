@@ -29,19 +29,14 @@ function Wave(_from, _to, _duration, _offset) {
 	return _from + a4 + sin((((current_time * 0.001) + _duration * _offset) / _duration) * (pi*2)) * a4;
 }
 
-function scale_canvas(_bw,_bh,_cw,_ch) {
-var _aspect = (_bw / _bh);
+function scale_canvas() {
+	var _width = browser_width;
+	var _height = browser_height;
 
-if ((_cw / _aspect) > _ch)
-    {
-    window_set_size((_ch *_aspect), _ch);
-    }
-else
-    {
-    window_set_size(_cw, (_cw / _aspect));
-
-    }
+	window_set_size(_width, _height);
 	window_center();
+
+	ResizeScreen();
 }
 
 function draw_line_shadow(_array,_width=2,_col=c_black) {
@@ -56,6 +51,22 @@ function setColorOpposite() {
 	draw_set_color(make_color_hsv(_col,255,255));
 }
 
-function holding() {
-	return (!MOBILE or mouse_check_button(mb_left))
+function ResizeScreen() {
+	var _ratio = window_get_width()/window_get_height();
+	
+	var _width = 960;
+	var _height = 540;
+	
+	if(_width/_ratio < _height)_width = round(540*_ratio);
+	else _height = round(960/_ratio);
+	
+	camera_set_view_size(view_camera[0],_width,_height);
+	camera_set_view_pos(view_camera[0],480-_width/2,270-_height/2);
+	
+	view_wport[0] = _width;
+	view_hport[0] = _height;
+	
+	if(instance_exists(oWall)) surface_free(oWall.surface);
+	
+	surface_resize(application_surface,_width,_height)
 }

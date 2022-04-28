@@ -3,18 +3,18 @@ var _fadeTime = 0.05;
 var _pointIn = -1;
 
 if(!surface_exists(surface)) {
-	surface = surface_create(room_width,room_height);
+	surface = surface_create(WIDTH,HEIGHT);
 	surface_set_target(surface);
 	draw_set_color(c_white);
-	draw_rectangle(0,0,room_width,room_height,false);
+	draw_rectangle(0,0,WIDTH,HEIGHT,false);
 	gpu_set_blendmode(bm_subtract);
 	draw_set_color(c_white);
 	draw_primitive_begin(pr_trianglelist);
 	for(var j = 0; j < array_length(shapes); j++) {
 		for(var i = 0; i < shapes[j].num; i++) {
-			draw_vertex(shapes[j].x,shapes[j].y);
-			draw_vertex(shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle));
-			draw_vertex(shapes[j].x+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle));
+			draw_vertex(shapes[j].x-xMin,shapes[j].y-yMin);
+			draw_vertex(shapes[j].x-xMin+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].y-yMin+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle));
+			draw_vertex(shapes[j].x-xMin+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle),shapes[j].y-yMin+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle));
 		}
 	}
 	draw_primitive_end();
@@ -25,13 +25,13 @@ if(!surface_exists(surface)) {
 if(z >= 1) z += 0.003;
 else z = min(1,z+spd);
 
-draw_surface_ext(surface,room_width*max(0,1-z)/2,room_height*max(0,1-z)/2,min(1,z),min(1,z),0,merge_color(c_black,oGlobalController.currentColor,min(1,z*2)),min(1,(_fadeTime-max(0,z-1))/_fadeTime));
+draw_surface_ext(surface,xMin+WIDTH*max(0,1-z)/2,yMin+HEIGHT*max(0,1-z)/2,min(1,z),min(1,z),0,merge_color(c_black,oGlobalController.currentColor,min(1,z*2)),min(1,(_fadeTime-max(0,z-1))/_fadeTime));
 
 draw_set_alpha(min(1,(_fadeTime-max(0,z-1))/_fadeTime));
 for(var j = 0; j < array_length(shapes); j++) {
 	if(_pointIn == -1) {
 		for(var i = 0; i < shapes[j].num; i++) {
-			if(holding() and point_in_triangle(mouse_x,mouse_y,shapes[j].x,shapes[j].y,shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].x+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle))) {
+			if(point_in_triangle(mouse_x,mouse_y,shapes[j].x,shapes[j].y,shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle),shapes[j].x+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle),shapes[j].y+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle))) {
 				_pointIn = j;
 				break;
 			}

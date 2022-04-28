@@ -1,7 +1,7 @@
 /// @desc
 
-var _w = room_width/global.smallStart;
-var _h = room_height/global.smallStart;
+var _w = WIDTH/global.smallStart;
+var _h = HEIGHT/global.smallStart;
 
 if(codeActivated) {
 	currentColor = make_color_hsv(irandom(255),255,255);
@@ -9,14 +9,14 @@ if(codeActivated) {
 }
 colorPercent = Approach(colorPercent,1,0.05);
 draw_set_color(merge_color(lastColor,currentColor,colorPercent));
-draw_line(0,0,room_width/2-_w,room_height/2-_h);
-draw_line(room_width,0,room_width/2+_w,room_height/2-_h);
-draw_line(0,room_height,room_width/2-_w,room_height/2+_h);
-draw_line(room_width,room_height,room_width/2+_w,room_height/2+_h);
+draw_line(xMin,yMin,room_width/2-_w,room_height/2-_h);
+draw_line(xMax,yMin,room_width/2+_w,room_height/2-_h);
+draw_line(xMin,yMax,room_width/2-_w,room_height/2+_h);
+draw_line(xMax,yMax,room_width/2+_w,room_height/2+_h);
 draw_rectangle(room_width/2-_w,room_height/2-_h,room_width/2+_w,room_height/2+_h,true);
 
 for(var i = 0; i < array_length(rectangles); i++) {
-	draw_rectangle(room_width/2*(1-rectangles[i]),room_height/2*(1-rectangles[i]),room_width/2*(1+rectangles[i]),room_height/2*(1+rectangles[i]),true);
+	draw_rectangle(xMin+WIDTH/2*(1-rectangles[i]),yMin+HEIGHT/2*(1-rectangles[i]),xMin+WIDTH/2*(1+rectangles[i]),yMin+HEIGHT/2*(1+rectangles[i]),true);
 	rectangles[i] += 0.01*median(0.01,rectangles[i]*1.5-0.1,1);
 	if(rectangles[i] > 1) {
 		array_delete(rectangles,i,1);
@@ -49,7 +49,7 @@ if(title) {
 			var _pointIn = false;
 			if(challengeCurrent == undefined or challengeCurrent == global.challengeID[j]) {
 				for(var i = 0; i < _num; i++) {
-					if(holding() and point_in_triangle(mouse_x,mouse_y,_xPos,_drawY,_xPos+lengthdir_x(_size,360/_num*i+_angle),_drawY+lengthdir_y(_size,360/_num*i+_angle),_xPos+lengthdir_x(_size,360/_num*(i+1)+_angle),_drawY+lengthdir_y(_size,360/_num*(i+1)+_angle))) {
+					if((!MOBILE or mouse_check_button(mb_left)) and point_in_triangle(mouse_x,mouse_y,_xPos,_drawY,_xPos+lengthdir_x(_size,360/_num*i+_angle),_drawY+lengthdir_y(_size,360/_num*i+_angle),_xPos+lengthdir_x(_size,360/_num*(i+1)+_angle),_drawY+lengthdir_y(_size,360/_num*(i+1)+_angle))) {
 						_pointIn = true;
 						break;
 					}
@@ -105,5 +105,5 @@ if(oGUI.start % 2) {
 }
 
 draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
-draw_sprite(sBack,0,8,room_height-8)
+draw_sprite(sBack,0,xMin+8,yMax-8)
 draw_set_alpha(1);
