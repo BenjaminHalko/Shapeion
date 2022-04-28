@@ -1,20 +1,16 @@
 if(os_browser != browser_not_a_browser) {
-	if(browser_width != width || browser_height != height)
-	{
+	if(browser_width != width || browser_height != height) {
 		width = browser_width;
 		height = browser_height;
 		scale_canvas();
-	
 	}
 } else {
-	if(window_get_width() != width || window_get_height() != height)
-	{
+	if(window_get_width() != width || window_get_height() != height) {
 		width = window_get_width();
 		height = window_get_height();
 		ResizeScreen();
 	}
 }
-
 
 if(title) {
 	startPercent = ApproachFade(startPercent,global.hardMode != -1,0.2,0.8);
@@ -24,41 +20,46 @@ if(title) {
 		title = false;
 		newrecord = false;
 		menuFadeOut = false;
-		instance_create_layer(room_width/2,room_height+64,"Player",oPlayer);
+		instance_create_layer(room_width/2,yMax+64,"Player",oPlayer);
 		oGUI.alarm[0] = 15;
 		audio_play_sound(snReady,1,false);
 	}
+	if(keyboard_check_pressed(vk_backspace) and MOBILE and os_browser == browser_not_a_browser) game_end();
 } else if(!instance_exists(oWall) && global.lives > 0 && start && !tempStop) instance_create_layer(0,0,"Wall",oWall);
 
 global.expandSpeed = 0.001+0.0001*global.score/100+0.006*global.hardMode;
 
-if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-40,xMin+40,yMax-8)) {
-	backAlpha = ApproachFade(backAlpha,1,0.1,0.8);
-	if(mouse_check_button_pressed(mb_left)) {
-		instance_destroy(oPlayer);
-		instance_destroy(oShapeGet);
-		instance_destroy(oWall);
+function backToMenu() {
+	instance_destroy(oPlayer);
+	instance_destroy(oShapeGet);
+	instance_destroy(oWall);
 
-		title = true;
-		menuFadeOut = false;
-		global.hardMode = -1;
+	title = true;
+	menuFadeOut = false;
+	global.hardMode = -1;
 
-		global.score = 0;
+	global.score = 0;
 
-		menuPercent = [0,0];
-		tempStop = false;
+	menuPercent = [0,0];
+	tempStop = false;
 
-		oGUI.alarm[0] = -1;
-		oGUI.alarm[1] = -1;
+	oGUI.alarm[0] = -1;
+	oGUI.alarm[1] = -1;
 
-		oGUI.start = 8;
-		start = false;
+	oGUI.start = 8;
+	start = false;
 
-		alarm[1] = -1;
-		alarm[2] = -1;
-		alarm[4] = -1;
-	}
-} else backAlpha = ApproachFade(backAlpha,0,0.1,0.8);
+	alarm[1] = -1;
+	alarm[2] = -1;
+	alarm[4] = -1;	
+}
+
+if(!MOBILE or os_browser != browser_not_a_browser) {
+	if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-40,xMin+40,yMax-8)) {
+		backAlpha = ApproachFade(backAlpha,1,0.1,0.8);
+		if(mouse_check_button_pressed(mb_left)) backToMenu();
+	} else backAlpha = ApproachFade(backAlpha,0,0.1,0.8);
+} else if(keyboard_check_pressed(vk_backspace)) backToMenu();
 
 if(keyboard_lastkey != -1) {
 	if(keyboard_lastkey == secretCode[codeNum]) {

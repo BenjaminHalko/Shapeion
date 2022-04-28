@@ -104,6 +104,8 @@ if(oGUI.start % 2) {
 	}
 }
 
-draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
-draw_sprite(sBack,0,xMin+8,yMax-8)
-draw_set_alpha(1);
+if(!MOBILE or os_browser != browser_not_a_browser) {
+	draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
+	draw_sprite(sBack,0,xMin+8,yMax-8)
+	draw_set_alpha(1);
+}

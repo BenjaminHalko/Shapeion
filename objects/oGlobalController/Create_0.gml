@@ -62,10 +62,11 @@ alarm[0] = 1;
 if(os_browser != browser_not_a_browser) {
 	width = browser_width;
 	height = browser_height;
-	scale_canvas(960,540,width,height);
+	scale_canvas();
 } else {
 	width = window_get_width();
-	height = window_get_height();	
+	height = window_get_height();
+	ResizeScreen();
 }
 
 lastColor = c_black;

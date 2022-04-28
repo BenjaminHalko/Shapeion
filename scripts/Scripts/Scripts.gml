@@ -54,6 +54,8 @@ function setColorOpposite() {
 function ResizeScreen() {
 	var _ratio = window_get_width()/window_get_height();
 	
+	if(_ratio == WIDTH/HEIGHT or window_get_width() <= 0 or window_get_height <= 0) return;
+	
 	var _width = 960;
 	var _height = 540;
 	
@@ -68,5 +70,5 @@ function ResizeScreen() {
 	
 	if(instance_exists(oWall)) surface_free(oWall.surface);
 	
-	surface_resize(application_surface,_width,_height)
+	surface_resize(application_surface,_width,_height);
 }
