@@ -1,6 +1,6 @@
 shapes = [];
 
-size = 120-20*global.hardMode;
+size = (120-20*global.hardMode)*sizeRatio;
 
 var _shapeArray = [3,4,6,5,8,7];
 var _soundArray = [snTriangle,snSquare,snHexagon,snPentagon,snOctagon,snSeptagon];

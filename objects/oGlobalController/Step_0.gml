@@ -55,7 +55,7 @@ function backToMenu() {
 }
 
 if(!MOBILE or os_browser != browser_not_a_browser) {
-	if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-40,xMin+40,yMax-8)) {
+	if(point_in_rectangle(mouse_x,mouse_y,xMin+8*guiRatio,yMax-40*guiRatio,xMin+40*guiRatio,yMax-8*guiRatio)) {
 		backAlpha = ApproachFade(backAlpha,1,0.1,0.8);
 		if(mouse_check_button_pressed(mb_left)) backToMenu();
 	} else backAlpha = ApproachFade(backAlpha,0,0.1,0.8);

@@ -27,18 +27,18 @@ for(var i = 0; i < array_length(rectangles); i++) {
 if(title) {
 	var _col = color_get_hue(merge_color(lastColor,currentColor,colorPercent))+128;
 	if(_col > 255) _col -= 255;
-	draw_sprite_ext(sTitle,1,room_width/2,room_height/2-50,4,4,0,make_color_hsv(_col,255,255),titleAlpha);
-	draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50,4,4,0,c_white,titleAlpha);
+	draw_sprite_ext(sTitle,1,room_width/2,room_height/2-50,4*min(1.4,guiRatio),4*min(1.4,guiRatio),0,make_color_hsv(_col,255,255),titleAlpha);
+	draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50,4*min(1.4,guiRatio),4*min(1.4,guiRatio),0,c_white,titleAlpha);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_font(fontGui);
 	
 	if(!menuFadeOut) {
 		var _drawX = 150;
-		var _drawY = room_height/4*3+20;
+		var _drawY = room_height/4*3+20+min(0.8,guiRatio-1)*120;
 	
 		var _angle = 90;
-		var _size = 80;
+		var _size = min(140,80*guiRatio);
 		for(var j = 0; j < 2; j++) {
 			var _shapeArray = [];
 			var _shapeArrayCol = [];
@@ -85,8 +85,8 @@ if(title) {
 			if(global.hardMode != j or blink) {
 				draw_set_alpha((1-startPercent*(global.hardMode != j))*(.5+.5*(challengeCurrent == undefined or challengeCurrent == global.challengeID[j])));
 				draw_set_color(_col[challengeCurrent == undefined or challengeCurrent == global.challengeID[j]]);
-				if(j == 0) draw_text(_xPos,_drawY,"NORMAL");
-				else draw_text(_xPos,_drawY,"HARD");
+				if(j == 0) draw_text_transformed(_xPos,_drawY,"NORMAL",min(1.8,guiRatio),min(1.8,guiRatio),0);
+				else draw_text_transformed(_xPos,_drawY,"HARD",min(1.8,guiRatio),min(1.8,guiRatio),0);
 				draw_line_shadow(_shapeArray);
 				draw_set_alpha(1);
 			}
@@ -105,7 +105,5 @@ if(oGUI.start % 2) {
 }
 
 if(!MOBILE or os_browser != browser_not_a_browser) {
-	draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
-	draw_sprite(sBack,0,xMin+8,yMax-8)
-	draw_set_alpha(1);
+	draw_sprite_ext(sBack,0,xMin+8*guiRatio,yMax-8*guiRatio,guiRatio,guiRatio,0,c_white,lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
 }

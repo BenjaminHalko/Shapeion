@@ -22,7 +22,7 @@ if(correct) {
 }
 else if(correct == -1) {
 	draw_set_color(c_white);
-	var _size = lerp(size,200,percentMove)*min(1,animcurve_channel_evaluate(curveCorrect,percent));
+	var _size = lerp(size,200*guiRatio,percentMove)*min(1,animcurve_channel_evaluate(curveCorrect,percent));
 	var _angle = lerp(angle,0,percentMove)+min(1,animcurve_channel_evaluate(curveCorrect,percent))*90;
 	x = lerp(xstart,room_width/2,percentMove);
 	y = lerp(ystart,room_height/2,percentMove);
