@@ -56,11 +56,15 @@ function ResizeScreen() {
 	
 	if(_ratio == WIDTH/HEIGHT or window_get_width() <= 0 or window_get_height <= 0) return;
 	
-	var _width = 960;
-	var _height = 540;
+	var _width, _height;
 	
-	if(_width/_ratio < _height)_width = round(540*_ratio);
-	else _height = round(960/_ratio);
+	if(_ratio > 1) {
+		_width = round(540*_ratio);
+		_height = 540;
+	} else {
+		_width = 540;
+		_height = round(540/_ratio);
+	}
 	
 	camera_set_view_size(view_camera[0],_width,_height);
 	camera_set_view_pos(view_camera[0],480-_width/2,270-_height/2);

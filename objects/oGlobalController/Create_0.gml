@@ -16,8 +16,7 @@ global.challengeID = [
 #macro xMax (room_width-xMin)
 #macro yMax (room_height-yMin)
 
-#macro sizeRatio ((HEIGHT/540+WIDTH/960)/2)
-#macro guiRatio ((HEIGHT/540+min(1,WIDTH/960))/2)
+#macro sizeRatio ((max(WIDTH,HEIGHT)/960+min(WIDTH,HEIGHT)/540)/2)
 
 randomize();
 
