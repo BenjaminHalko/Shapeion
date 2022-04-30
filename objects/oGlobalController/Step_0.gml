@@ -33,6 +33,8 @@ function backToMenu() {
 	instance_destroy(oPlayer);
 	instance_destroy(oShapeGet);
 	instance_destroy(oWall);
+	
+	SubmitScore();
 
 	title = true;
 	menuFadeOut = false;
@@ -51,7 +53,7 @@ function backToMenu() {
 
 	alarm[1] = -1;
 	alarm[2] = -1;
-	alarm[4] = -1;	
+	alarm[4] = -1;
 }
 
 if(!MOBILE or os_browser != browser_not_a_browser) {

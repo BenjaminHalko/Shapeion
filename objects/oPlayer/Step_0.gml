@@ -23,20 +23,7 @@ else if(y < yMax+64) {
 		oGUI.alarm[1] = 30;
 		oGUI.start = 6;
 		global.expandSpeed = 0.005;
-		if(OPERA) {
-			try gxc_challenge_submit_score(global.score,undefined,{challengeId: global.challengeID[global.hardMode]});
-			catch(_error) show_debug_message(_error);
-		}
-		if(global.score > global.hiScore[global.hardMode]) {
-			global.hiScore[global.hardMode] = global.score;
-			if(!OPERA) {
-				var _mode = ["normal","hard"];
-				ini_open("score.ini");
-				ini_write_real("score",_mode[global.hardMode],global.score);
-				ini_close();
-			}
-			oGlobalController.newrecord = true;
-		}
+		SubmitScore();
 	}
 }
 

@@ -101,7 +101,7 @@ if(title) {
 if(oGUI.start % 2) {
 	if(newrecord) {
 		draw_set_color(c_red);
-		draw_text(room_width/2,64,"NEW RECORD");
+		draw_text(room_width/2,yMin+64,"NEW RECORD");
 	}
 }
 

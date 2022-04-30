@@ -76,3 +76,22 @@ function ResizeScreen() {
 	
 	surface_resize(application_surface,_width,_height);
 }
+
+function SubmitScore() {
+	if(global.hardMode != -1) {
+		if(OPERA) {
+			try gxc_challenge_submit_score(global.score,undefined,{challengeId: global.challengeID[global.hardMode]});
+			catch(_error) show_debug_message(_error);
+		}
+		if(global.score > global.hiScore[global.hardMode]) {
+			global.hiScore[global.hardMode] = global.score;
+			if(!OPERA) {
+				var _mode = ["normal","hard"];
+				ini_open("score.ini");
+				ini_write_real("score",_mode[global.hardMode],global.score);
+				ini_close();
+			}
+			oGlobalController.newrecord = true;
+		}
+	}
+}
