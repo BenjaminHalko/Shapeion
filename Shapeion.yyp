@@ -16,6 +16,7 @@
     {"id":{"name":"sBack","path":"sprites/sBack/sBack.yy",},"order":8,},
     {"id":{"name":"snHexagon","path":"sounds/snHexagon/snHexagon.yy",},"order":3,},
     {"id":{"name":"Scripts","path":"scripts/Scripts/Scripts.yy",},"order":0,},
+    {"id":{"name":"sSound","path":"sprites/sSound/sSound.yy",},"order":15,},
     {"id":{"name":"oGlobalController","path":"objects/oGlobalController/oGlobalController.yy",},"order":4,},
     {"id":{"name":"gxc_api","path":"scripts/gxc_api/gxc_api.yy",},"order":2,},
     {"id":{"name":"fontGui","path":"fonts/fontGui/fontGui.yy",},"order":2,},

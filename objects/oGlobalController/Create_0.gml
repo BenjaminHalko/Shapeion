@@ -94,4 +94,8 @@ menuFadeOut = false;
 
 backAlpha = 0;
 
+vol = 0.8;
+volAlpha = 0.6;
+volClick = false;
+
 if(!audio_is_playing(mMusic)) audio_play_sound(mMusic,1,true);

@@ -1,6 +1,6 @@
 {
-  "option_operagx_version": "0.0.0.21",
-  "option_operagx_next_version": "0.0.0.22",
+  "option_operagx_version": "0.0.0.22",
+  "option_operagx_next_version": "0.0.0.23",
   "option_operagx_game_name": "Shapeion",
   "option_operagx_interpolate_pixels": false,
   "option_operagx_scale": 0,

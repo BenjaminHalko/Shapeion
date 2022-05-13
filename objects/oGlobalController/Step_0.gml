@@ -16,6 +16,13 @@ if(title) {
 	startPercent = ApproachFade(startPercent,global.hardMode != -1,0.2,0.8);
 	if(alarm[3] <= 0 and startPercent == 0) alarm[3] = room_speed*5;
 	titleAlpha = ApproachFade(titleAlpha,!menuFadeOut,0.1,0.8);
+	volAlpha = ApproachFade(volAlpha,0.4+0.3*(point_in_rectangle(mouse_x,mouse_y,xMin+14,yMax-68,xMin+22,yMax-12) or volClick),0.2,0.8);
+	if(point_in_rectangle(mouse_x,mouse_y,xMin+14,yMax-68,xMin+22,yMax-12) && mouse_check_button_pressed(mb_left)) volClick = true;
+	else if(!mouse_check_button(mb_left)) volClick = false;
+	if(volClick) {
+		vol = median(0,1,1-(mouse_y-yMax+68)/56);
+		audio_sound_gain(mMusic,vol,0);
+	}
 	if(titleAlpha == 0 && !instance_exists(oShapeGet)) {
 		title = false;
 		newrecord = false;
