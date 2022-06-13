@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snSquare.mp3",
-  "duration": 0.802,
+  "soundFile": "snsquare.mp3",
+  "duration": 0.775857,
   "parent": {
     "name": "Sounds",
     "path": "folders/Wall/Sounds.yy",

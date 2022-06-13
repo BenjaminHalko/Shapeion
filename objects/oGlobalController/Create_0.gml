@@ -94,7 +94,7 @@ menuFadeOut = false;
 
 backAlpha = 0;
 
-vol = 0.8;
+vol = 0.75;
 volAlpha = 0.6;
 volClick = false;
 

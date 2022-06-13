@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snTriangle.mp3",
-  "duration": 0.802,
+  "soundFile": "sntriangle.mp3",
+  "duration": 0.828143,
   "parent": {
     "name": "Sounds",
     "path": "folders/Wall/Sounds.yy",

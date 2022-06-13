@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snSeptagon.mp3",
-  "duration": 0.880286,
+  "soundFile": "snseptagon.mp3",
+  "duration": 0.854143,
   "parent": {
     "name": "Sounds",
     "path": "folders/Wall/Sounds.yy",

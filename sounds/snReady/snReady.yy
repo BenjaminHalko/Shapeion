@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snReady.wav",
-  "duration": 0.408156,
+  "soundFile": "snready.mp3",
+  "duration": 0.619143,
   "parent": {
     "name": "Sounds",
     "path": "folders/Global/Sounds.yy",

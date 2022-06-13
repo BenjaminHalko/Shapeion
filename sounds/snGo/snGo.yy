@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snGo.wav",
-  "duration": 0.471344,
+  "soundFile": "sngo.mp3",
+  "duration": 0.566857,
   "parent": {
     "name": "Sounds",
     "path": "folders/Global/Sounds.yy",

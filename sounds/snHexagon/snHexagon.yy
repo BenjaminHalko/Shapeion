@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snHexagon.mp3",
-  "duration": 0.854143,
+  "soundFile": "snhexagon.mp3",
+  "duration": 0.828143,
   "parent": {
     "name": "Sounds",
     "path": "folders/Wall/Sounds.yy",

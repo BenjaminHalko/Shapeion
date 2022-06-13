@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snGameOver.wav",
-  "duration": 0.817656,
+  "soundFile": "sngameover.mp3",
+  "duration": 0.880286,
   "parent": {
     "name": "Sounds",
     "path": "folders/Global/Sounds.yy",

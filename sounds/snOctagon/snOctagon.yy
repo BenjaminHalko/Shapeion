@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snOctagon.mp3",
-  "duration": 0.775857,
+  "soundFile": "snoctagon.mp3",
+  "duration": 0.749714,
   "parent": {
     "name": "Sounds",
     "path": "folders/Wall/Sounds.yy",
