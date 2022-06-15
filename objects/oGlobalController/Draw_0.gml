@@ -36,9 +36,9 @@ if(title) {
 	
 	draw_set_color(c_white);
 	draw_set_alpha(volAlpha*titleAlpha);
-	draw_line_width(xMin+18,yMax-68,xMin+18,yMax-12,2);
-	draw_circle(xMin+18,lerp(yMax-12,yMax-68,vol),6,false);
-	draw_sprite(sSound,0,xMin+18,yMax-78);
+	draw_line_width(xMin+18,yMax-74,xMin+18,yMax-18,2);
+	draw_circle(xMin+18,lerp(yMax-18,yMax-74,vol),6,false);
+	draw_sprite(sSound,0,xMin+18,yMax-84);
 	draw_set_alpha(1);
 	
 	if(!menuFadeOut) {
