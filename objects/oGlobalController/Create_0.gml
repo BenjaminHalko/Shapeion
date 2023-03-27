@@ -4,6 +4,10 @@ global.challengeID = [
 "f010edca-0b09-4803-9452-487f4ce65457",
 "cbe0c54a-609d-4fad-bac3-13a568e45050"];
 
+global.leaderboardID = [
+"CgkIiZ2DqfgXEAIQAA",
+"CgkIiZ2DqfgXEAIQAQ"];
+
 #macro OPERA (os_type == os_operagx)
 #macro MOBILE (os_type == os_android or os_type == os_ios)
 #macro MAXLIVES 6
@@ -94,6 +98,7 @@ titleAlpha = 1;
 menuFadeOut = false;
 
 backAlpha = 0;
+playAlpha = 0;
 
 vol = 0.75;
 volAlpha = 0.6;

@@ -36,9 +36,9 @@ if(title) {
 	
 	draw_set_color(c_white);
 	draw_set_alpha(volAlpha*titleAlpha);
-	draw_line_width(xMin+18,yMax-74,xMin+18,yMax-18,2);
-	draw_circle(xMin+18,lerp(yMax-18,yMax-74,vol),6,false);
-	draw_sprite(sSound,0,xMin+18,yMax-84);
+	draw_line_width(xMin+22,yMax-74,xMin+22,yMax-18,2);
+	draw_circle(xMin+22,lerp(yMax-18,yMax-74,vol),6,false);
+	draw_sprite(sSound,0,xMin+22,yMax-84);
 	draw_set_alpha(1);
 	
 	if(!menuFadeOut) {
@@ -112,8 +112,12 @@ if(oGUI.start % 2) {
 	}
 }
 
-if(!MOBILE or os_browser != browser_not_a_browser) {
-	draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
-	draw_sprite(sBack,0,xMin+8,yMax-8);
+draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
+draw_sprite(sBack,0,xMin+8,yMax-8);
+draw_set_alpha(1);
+
+if (os_type == os_android) {
+	draw_set_alpha(lerp(0.4,0.7,playAlpha)*titleAlpha);
+	draw_sprite(sGooglePlay,0,xMax-60,yMax-8);
 	draw_set_alpha(1);
 }

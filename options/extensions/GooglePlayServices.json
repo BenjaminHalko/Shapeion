@@ -1,0 +1,15 @@
+{
+  "resourceType": "GMExtensionConfigSet",
+  "configurables": {
+    "2333e839-6686-4c10-a29b-851041b2e067": {
+      "Default": {
+        "value": "822572273289"
+      }
+    }
+  },
+  "extensionId": {
+    "name": "GooglePlayServices",
+    "path": "extensions/GooglePlayServices/GooglePlayServices.yy"
+  },
+  "resourceVersion": "1.0"
+}

@@ -83,6 +83,9 @@ function SubmitScore() {
 			try gxc_challenge_submit_score(global.score,undefined,{challengeId: global.challengeID[global.hardMode]});
 			catch(_error) show_debug_message(_error);
 		}
+		if(os_type == os_android) {
+			GooglePlayServices_Leaderboard_SubmitScore(global.leaderboardID[global.hardMode],global.score,"");
+		}
 		if(global.score > global.hiScore[global.hardMode]) {
 			global.hiScore[global.hardMode] = global.score;
 			if(!OPERA) {

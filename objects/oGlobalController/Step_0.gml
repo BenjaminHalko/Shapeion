@@ -19,7 +19,7 @@ if(title) {
 	if(alarm[3] <= 0 and startPercent == 0) alarm[3] = room_speed*5;
 	titleAlpha = ApproachFade(titleAlpha,!menuFadeOut,0.1,0.8);
 	volAlpha = ApproachFade(volAlpha,0.4+0.3*((point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-80,xMin+28,yMax-12) and !MOBILE) or volClick),0.2,0.8);
-	if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-80,xMin+28,yMax-12) && mouse_check_button_pressed(mb_left)) volClick = true;
+	if(point_in_rectangle(mouse_x,mouse_y,xMin+12,yMax-80,xMin+32,yMax-12) && mouse_check_button_pressed(mb_left)) volClick = true;
 	else if(!mouse_check_button(mb_left)) volClick = false;
 	if(volClick) {
 		vol = median(0,1,1-(mouse_y-yMax+74)/56);
@@ -65,13 +65,20 @@ function backToMenu() {
 	alarm[4] = -1;
 }
 
-if(!MOBILE or os_browser != browser_not_a_browser) {
-	if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-40,xMin+40,yMax-8)) {
-		backAlpha = ApproachFade(backAlpha,1,0.1,0.8);
-		if(mouse_check_button_pressed(mb_left)) backToMenu();
-	} else backAlpha = ApproachFade(backAlpha,0,0.1,0.8);
-} else if(keyboard_check_pressed(vk_backspace)) backToMenu();
+if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-40,xMin+40,yMax-8)) {
+	backAlpha = ApproachFade(backAlpha,1,0.1,0.8);
+	if(mouse_check_button_pressed(mb_left)) backToMenu();
+} else backAlpha = ApproachFade(backAlpha,0,0.1,0.8);
 
+if(keyboard_check_pressed(vk_backspace) and MOBILE) backToMenu();
+
+if (os_type == os_android) {
+	if(point_in_rectangle(mouse_x,mouse_y,xMax-60,yMax-60,xMax-8,yMax-8)) {
+		playAlpha = ApproachFade(playAlpha,1,0.1,0.8);
+		if(mouse_check_button_pressed(mb_left)) GooglePlayServices_Leaderboard_ShowAll();
+	} else playAlpha = ApproachFade(playAlpha,0,0.1,0.8);
+}
+	
 if(keyboard_lastkey != -1) {
 	if(keyboard_lastkey == secretCode[codeNum]) {
 		codeNum++;
