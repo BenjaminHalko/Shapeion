@@ -5,8 +5,8 @@ global.challengeID = [
 "cbe0c54a-609d-4fad-bac3-13a568e45050"];
 
 global.leaderboardID = [
-"CgkIiZ2DqfgXEAIQAA",
-"CgkIiZ2DqfgXEAIQAQ"];
+"CgkInLT-qa4UEAIQAA",
+"CgkInLT-qa4UEAIQAQ"];
 
 #macro OPERA (os_type == os_operagx)
 #macro MOBILE (os_type == os_android or os_type == os_ios)
