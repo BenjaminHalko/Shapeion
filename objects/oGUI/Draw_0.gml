@@ -11,9 +11,9 @@ if(oGlobalController.title) {
 
 if(oGlobalController.titleAlpha != 1) {
 	draw_set_halign(fa_left);
-	draw_text(max(xMin+12,64),yMin+lerp(12,-32,oGlobalController.titleAlpha)+guiY,"SCORE\n  "+string_replace_all(string_format(global.score,4,0)," ","0"));
+	draw_text(max(xMin+12,64),yMin+lerp(12+guiY,-32,oGlobalController.titleAlpha),"SCORE\n  "+string_replace_all(string_format(global.score,4,0)," ","0"));
 	draw_set_halign(fa_center);	
-	draw_text(room_width/2+min(0,WIDTH/960-1)*110,yMin+lerp(12,-32,oGlobalController.titleAlpha)+guiY,"HIGH SCORE\n"+string_replace_all(string_format(global.hiScore[hiScoreView],5,0)," ","0"));
+	draw_text(room_width/2+min(0,WIDTH/960-1)*110,yMin+lerp(12+guiY,-32,oGlobalController.titleAlpha),"HIGH SCORE\n"+string_replace_all(string_format(global.hiScore[hiScoreView],5,0)," ","0"));
 	draw_set_valign(fa_bottom);
 	if(instance_exists(oWall)) {
 		draw_set_alpha(1-oWall.z);
