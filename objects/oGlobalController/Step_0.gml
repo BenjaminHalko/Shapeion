@@ -18,13 +18,36 @@ if(title) {
 	startPercent = ApproachFade(startPercent,global.hardMode != -1,0.2,0.8);
 	if(alarm[3] <= 0 and startPercent == 0) alarm[3] = room_speed*5;
 	titleAlpha = ApproachFade(titleAlpha,!menuFadeOut,0.1,0.8);
-	volAlpha = ApproachFade(volAlpha,0.4+0.3*((point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-80,xMin+28,yMax-12) and !MOBILE) or volClick),0.2,0.8);
-	if(point_in_rectangle(mouse_x,mouse_y,xMin+12,yMax-80,xMin+32,yMax-12) && mouse_check_button_pressed(mb_left)) volClick = true;
-	else if(!mouse_check_button(mb_left)) volClick = false;
-	if(volClick) {
-		vol = median(0,1,1-(mouse_y-yMax+74)/56);
-		audio_sound_gain(mMusic,vol,0);
+	if (os_type != os_android) and false {
+		volAlpha = ApproachFade(volAlpha,0.4+0.3*((point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-80,xMin+28,yMax-12) and !MOBILE) or volClick),0.2,0.8);
+		if(point_in_rectangle(mouse_x,mouse_y,xMin+12,yMax-80,xMin+32,yMax-12) && mouse_check_button_pressed(mb_left)) volClick = true;
+		else if(!mouse_check_button(mb_left)) volClick = false;
+		if(volClick) {
+			var _newVol = round(median(0,1,1-(mouse_y-yMax+74)/56)*10)/10;
+			if vol != _newVol {
+				vol = _newVol;
+				audio_sound_gain(mMusic,vol,0);
+				ini_open("score.ini");
+				ini_write_real("settings","bgm",vol);
+				ini_close();
+			}
+		}
+	} else {
+		if(point_in_rectangle(mouse_x,mouse_y,xMax-60,yMax-60,xMax-8,yMax-8)) {
+			settingsAlpha = ApproachFade(settingsAlpha,1,0.1,0.8);
+			if(mouse_check_button_pressed(mb_left)) settingsMenu = !settingsMenu;
+		} else settingsAlpha = ApproachFade(settingsAlpha,0,0.1,0.8);
 	}
+	
+	settingsMenuAlpha = ApproachFade(settingsMenuAlpha,settingsMenu,0.2,0.8);
+	
+	if settingsMenuAlpha != 0 {
+		BGMSlider.step();
+		LeaderboardButton.step();
+		AchievementButton.step();
+		PrivacyPolicyButton.step();
+	}
+	
 	if(titleAlpha == 0 && !instance_exists(oShapeGet)) {
 		title = false;
 		newrecord = false;
@@ -71,13 +94,6 @@ if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-40,xMin+40,yMax-8)) {
 } else backAlpha = ApproachFade(backAlpha,0,0.1,0.8);
 
 if(keyboard_check_pressed(vk_backspace) and MOBILE) backToMenu();
-
-if (os_type == os_android) {
-	if(point_in_rectangle(mouse_x,mouse_y,xMax-60,yMax-60,xMax-8,yMax-8)) {
-		playAlpha = ApproachFade(playAlpha,1,0.1,0.8);
-		if(mouse_check_button_pressed(mb_left)) GooglePlayServices_Leaderboard_ShowAll();
-	} else playAlpha = ApproachFade(playAlpha,0,0.1,0.8);
-}
 	
 if(keyboard_lastkey != -1) {
 	if(keyboard_lastkey == secretCode[codeNum]) {

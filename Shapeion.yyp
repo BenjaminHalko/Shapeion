@@ -25,7 +25,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.200.0.299",
+    "IDEVersion": "2023.2.1.75",
   },
   "resources": [
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
@@ -38,12 +38,13 @@
     {"id":{"name":"snGo","path":"sounds/snGo/snGo.yy",},},
     {"id":{"name":"sLife","path":"sprites/sLife/sLife.yy",},},
     {"id":{"name":"oGUI","path":"objects/oGUI/oGUI.yy",},},
+    {"id":{"name":"Notch","path":"extensions/Notch/Notch.yy",},},
     {"id":{"name":"snTriangle","path":"sounds/snTriangle/snTriangle.yy",},},
     {"id":{"name":"sTitle","path":"sprites/sTitle/sTitle.yy",},},
     {"id":{"name":"snPentagon","path":"sounds/snPentagon/snPentagon.yy",},},
     {"id":{"name":"objHttpManager","path":"objects/objHttpManager/objHttpManager.yy",},},
     {"id":{"name":"sBack","path":"sprites/sBack/sBack.yy",},},
-    {"id":{"name":"sGooglePlay","path":"sprites/sGooglePlay/sGooglePlay.yy",},},
+    {"id":{"name":"sSettings","path":"sprites/sSettings/sSettings.yy",},},
     {"id":{"name":"snHexagon","path":"sounds/snHexagon/snHexagon.yy",},},
     {"id":{"name":"Scripts","path":"scripts/Scripts/Scripts.yy",},},
     {"id":{"name":"sSound","path":"sprites/sSound/sSound.yy",},},

@@ -54,6 +54,14 @@ function setColorOpposite() {
 function ResizeScreen() {
 	var _ratio = window_get_width()/window_get_height();
 	
+	if global.notched {
+		
+		var _bottom = NOTCH_getBottom(display_get_orientation(),"");
+		if _bottom < display_get_height()/2 {
+			oGUI.guiY = _bottom;
+		} else oGUI.guiY = 0;
+	}
+	
 	if(_ratio == WIDTH/HEIGHT or window_get_width() <= 0 or window_get_height <= 0) return;
 	
 	var _width, _height;

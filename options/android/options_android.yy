@@ -51,7 +51,7 @@
   "option_android_package_domain": "com",
   "option_android_package_product": "shapeion",
   "option_android_permission_bluetooth": false,
-  "option_android_permission_internet": false,
+  "option_android_permission_internet": true,
   "option_android_permission_network_state": false,
   "option_android_permission_read_phone_state": false,
   "option_android_permission_record_audio": false,

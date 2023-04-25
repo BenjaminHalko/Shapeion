@@ -5,3 +5,5 @@ start = 8;
 shapeText = "";
 
 hiScoreView = -1;
+
+guiY = 0;

@@ -28,18 +28,22 @@ if(title) {
 	var _titleSize = min(1,WIDTH/960+0.2)
 	var _col = color_get_hue(merge_color(lastColor,currentColor,colorPercent))+128;
 	if(_col > 255) _col -= 255;
-	draw_sprite_ext(sTitle,1,room_width/2,room_height/2-50,4*_titleSize,4*_titleSize,0,make_color_hsv(_col,255,255),titleAlpha);
-	draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50,4*_titleSize,4*_titleSize,0,c_white,titleAlpha);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_font(fontGui);
 	
-	draw_set_color(c_white);
-	draw_set_alpha(volAlpha*titleAlpha);
-	draw_line_width(xMin+22,yMax-74,xMin+22,yMax-18,2);
-	draw_circle(xMin+22,lerp(yMax-18,yMax-74,vol),6,false);
-	draw_sprite(sSound,0,xMin+22,yMax-84);
-	draw_set_alpha(1);
+	if os_type != os_android and false {
+		draw_set_color(c_white);
+		draw_set_alpha(volAlpha*titleAlpha);
+		draw_line_width(xMin+22,yMax-74,xMin+22,yMax-18,2);
+		draw_circle(xMin+22,lerp(yMax-18,yMax-74,vol),6,false);
+		draw_sprite(sSound,0,xMin+22,yMax-84);
+		draw_set_alpha(1);
+	} else {
+		draw_set_alpha(lerp(0.4,0.7,settingsAlpha)*titleAlpha);
+		draw_sprite(sSettings,0,xMax-60,yMax-8);
+		draw_set_alpha(1);
+	}
 	
 	if(!menuFadeOut) {
 		var _drawX = 150;
@@ -55,11 +59,13 @@ if(title) {
 			var _xPos = room_width/2-_drawX*(1-j*2)*(1-startPercent*(global.hardMode == j))*_titleSize;
 		
 			var _pointIn = false;
-			if(challengeCurrent == undefined or challengeCurrent == global.challengeID[j]) {
-				for(var i = 0; i < _num; i++) {
-					if((!MOBILE or mouse_check_button(mb_left)) and point_in_triangle(mouse_x,mouse_y,_xPos,_drawY,_xPos+lengthdir_x(_size,360/_num*i+_angle),_drawY+lengthdir_y(_size,360/_num*i+_angle),_xPos+lengthdir_x(_size,360/_num*(i+1)+_angle),_drawY+lengthdir_y(_size,360/_num*(i+1)+_angle))) {
-						_pointIn = true;
-						break;
+			if !settingsMenu {
+				if(challengeCurrent == undefined or challengeCurrent == global.challengeID[j]) {
+					for(var i = 0; i < _num; i++) {
+						if((!MOBILE or mouse_check_button(mb_left)) and point_in_triangle(mouse_x,mouse_y,_xPos,_drawY,_xPos+lengthdir_x(_size,360/_num*i+_angle),_drawY+lengthdir_y(_size,360/_num*i+_angle),_xPos+lengthdir_x(_size,360/_num*(i+1)+_angle),_drawY+lengthdir_y(_size,360/_num*(i+1)+_angle))) {
+							_pointIn = true;
+							break;
+						}
 					}
 				}
 			}
@@ -89,10 +95,10 @@ if(title) {
 				}
 			}
 			
-			var _col = [c_grey,c_white];
+			var _buttonCol = [c_grey,c_white];
 			if(global.hardMode != j or blink) {
-				draw_set_alpha((1-startPercent*(global.hardMode != j))*(.5+.5*(challengeCurrent == undefined or challengeCurrent == global.challengeID[j])));
-				draw_set_color(_col[challengeCurrent == undefined or challengeCurrent == global.challengeID[j]]);
+				draw_set_alpha((1-startPercent*(global.hardMode != j))*(.5+.5*(challengeCurrent == undefined or challengeCurrent == global.challengeID[j]))*(1-settingsMenuAlpha));
+				draw_set_color(_buttonCol[challengeCurrent == undefined or challengeCurrent == global.challengeID[j]]);
 				if(j == 0) draw_text(_xPos,_drawY,"NORMAL");
 				else draw_text(_xPos,_drawY,"HARD");
 				draw_line_shadow(_shapeArray);
@@ -101,6 +107,20 @@ if(title) {
 		
 			setColorOpposite();
 			draw_line_shadow(_shapeArrayCol,4);
+			
+			// Settings
+			if settingsMenuAlpha != 0 {
+				draw_set_alpha(settingsMenuAlpha);
+				BGMSlider.draw();
+				LeaderboardButton.draw();
+				AchievementButton.draw();
+				PrivacyPolicyButton.draw();
+				draw_set_alpha(1);
+			}
+			
+			//Title
+			draw_sprite_ext(sTitle,1,room_width/2,room_height/2-50-(40+65*(width / height < 1.15)+20*(width / height < 0.7))*settingsMenuAlpha,4*_titleSize,4*_titleSize,0,make_color_hsv(_col,255,255),titleAlpha);
+			draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50-(40+65*(width / height < 1.15)+20*(width / height < 0.7))*settingsMenuAlpha,4*_titleSize,4*_titleSize,0,c_white,titleAlpha);
 		}
 	}
 }
@@ -115,9 +135,3 @@ if(oGUI.start % 2) {
 draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
 draw_sprite(sBack,0,xMin+8,yMax-8);
 draw_set_alpha(1);
-
-if (os_type == os_android) {
-	draw_set_alpha(lerp(0.4,0.7,playAlpha)*titleAlpha);
-	draw_sprite(sGooglePlay,0,xMax-60,yMax-8);
-	draw_set_alpha(1);
-}
