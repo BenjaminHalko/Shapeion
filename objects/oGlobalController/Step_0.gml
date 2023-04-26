@@ -18,7 +18,7 @@ if(title) {
 	startPercent = ApproachFade(startPercent,global.hardMode != -1,0.2,0.8);
 	if(alarm[3] <= 0 and startPercent == 0) alarm[3] = room_speed*5;
 	titleAlpha = ApproachFade(titleAlpha,!menuFadeOut,0.1,0.8);
-	if (os_type != os_android) and false {
+	if (os_type != os_android) {
 		volAlpha = ApproachFade(volAlpha,0.4+0.3*((point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-80,xMin+28,yMax-12) and !MOBILE) or volClick),0.2,0.8);
 		if(point_in_rectangle(mouse_x,mouse_y,xMin+12,yMax-80,xMin+32,yMax-12) && mouse_check_button_pressed(mb_left)) volClick = true;
 		else if(!mouse_check_button(mb_left)) volClick = false;
@@ -32,10 +32,13 @@ if(title) {
 				ini_close();
 			}
 		}
-	} else {
-		if(point_in_rectangle(mouse_x,mouse_y,xMax-60,yMax-60,xMax-8,yMax-8)) {
+	} else if global.hardMode == -1 {
+		if(point_in_rectangle(mouse_x,mouse_y,xMax-72-guiXRight,yMax-72-oGUI.guiYBottom,xMax-8-guiXRight,yMax-8-oGUI.guiYBottom) and mouse_check_button(mb_left)) {
 			settingsAlpha = ApproachFade(settingsAlpha,1,0.1,0.8);
-			if(mouse_check_button_pressed(mb_left)) settingsMenu = !settingsMenu;
+			if(mouse_check_button_pressed(mb_left)) {
+				settingsMenu = !settingsMenu;
+				menuAllow = [0,0];
+			}
 		} else settingsAlpha = ApproachFade(settingsAlpha,0,0.1,0.8);
 	}
 	
@@ -56,7 +59,10 @@ if(title) {
 		oGUI.alarm[0] = 15;
 		audio_play_sound(snReady,1,false);
 	}
-	if(keyboard_check_pressed(vk_backspace) and MOBILE and os_browser == browser_not_a_browser) game_end();
+	if(keyboard_check_pressed(vk_backspace) and MOBILE and os_browser == browser_not_a_browser) {
+		if settingsMenu settingsMenu = false
+		else game_end();
+	}
 } else if(!instance_exists(oWall) && global.lives > 0 && start && !tempStop) instance_create_layer(0,0,"Wall",oWall);
 
 global.expandSpeed = 0.001+0.0001*global.score/100+0.006*global.hardMode;
@@ -75,6 +81,7 @@ function backToMenu() {
 	global.score = 0;
 
 	menuPercent = [0,0];
+	menuAllow = [0,0];
 	tempStop = false;
 
 	oGUI.alarm[0] = -1;
@@ -88,8 +95,8 @@ function backToMenu() {
 	alarm[4] = -1;
 }
 
-if(point_in_rectangle(mouse_x,mouse_y,xMin+8,yMax-40,xMin+40,yMax-8)) {
-	backAlpha = ApproachFade(backAlpha,1,0.1,0.8);
+if(point_in_rectangle(mouse_x,mouse_y,xMin+8+guiXLeft,yMax-40-32*MOBILE-oGUI.guiYBottom,xMin+40+32*MOBILE+guiXLeft,yMax-8-oGUI.guiYBottom)) {
+	backAlpha = ApproachFade(backAlpha,!MOBILE or mouse_check_button(mb_left),0.1,0.8);
 	if(mouse_check_button_pressed(mb_left)) backToMenu();
 } else backAlpha = ApproachFade(backAlpha,0,0.1,0.8);
 

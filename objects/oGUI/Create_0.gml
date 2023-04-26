@@ -7,3 +7,4 @@ shapeText = "";
 hiScoreView = -1;
 
 guiY = 0;
+guiYBottom = 0;

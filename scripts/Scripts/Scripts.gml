@@ -51,18 +51,44 @@ function setColorOpposite() {
 	draw_set_color(make_color_hsv(_col,255,255));
 }
 
+function ConfigNotch(_width,_height) {
+	if global.notched {
+		var _dir = display_get_orientation();
+		var _displayRatio = _height/window_get_height();
+		var _bottom = ceil(NOTCH_getBottom(_dir,"")*_displayRatio);
+		if _dir == display_portrait or _dir == display_portrait_flipped {
+			if _bottom < _height/2 {
+				oGUI.guiY = _bottom;
+			} else oGUI.guiY = 0;
+		
+			var _top = floor(NOTCH_getTop(_dir,"")*_displayRatio);
+			if _top > _height/2 {
+				oGUI.guiYBottom = _height-_top;
+			} else oGUI.guiYBottom = 0;
+			
+			oGlobalController.guiXLeft = 0;
+			oGlobalController.guiXRight = 0;
+		} else {
+			oGUI.guiY = 0;
+			oGUI.guiYBottom = 0;
+			
+			if _bottom > _height - 75 {
+				var _left = floor(NOTCH_getLeft(_dir,"")*_displayRatio);
+				if _left > _width / 2 {
+					oGlobalController.guiXRight = _width-_left;
+				} else oGlobalController.guiXRight = 0;
+				
+				var _right = ceil(NOTCH_getRight(_dir,"")*_displayRatio);
+				if _right < _width / 2 {
+					oGlobalController.guiXLeft = _right;
+				} else oGlobalController.guiXLeft = 0;
+			}
+		}
+	}
+}
+
 function ResizeScreen() {
 	var _ratio = window_get_width()/window_get_height();
-	
-	if global.notched {
-		
-		var _bottom = NOTCH_getBottom(display_get_orientation(),"");
-		if _bottom < display_get_height()/2 {
-			oGUI.guiY = _bottom;
-		} else oGUI.guiY = 0;
-	}
-	
-	if(_ratio == WIDTH/HEIGHT or window_get_width() <= 0 or window_get_height <= 0) return;
 	
 	var _width, _height;
 	
@@ -73,6 +99,10 @@ function ResizeScreen() {
 		_width = 540;
 		_height = round(540/_ratio);
 	}
+	
+	ConfigNotch(_width,_height);
+	
+	if(_ratio == WIDTH/HEIGHT or window_get_width() <= 0 or window_get_height <= 0) return;
 	
 	camera_set_view_size(view_camera[0],_width,_height);
 	camera_set_view_pos(view_camera[0],480-_width/2,270-_height/2);

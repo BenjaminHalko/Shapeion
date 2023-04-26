@@ -32,7 +32,7 @@ if(title) {
 	draw_set_valign(fa_middle);
 	draw_set_font(fontGui);
 	
-	if os_type != os_android and false {
+	if os_type != os_android {
 		draw_set_color(c_white);
 		draw_set_alpha(volAlpha*titleAlpha);
 		draw_line_width(xMin+22,yMax-74,xMin+22,yMax-18,2);
@@ -40,9 +40,13 @@ if(title) {
 		draw_sprite(sSound,0,xMin+22,yMax-84);
 		draw_set_alpha(1);
 	} else {
-		draw_set_alpha(lerp(0.4,0.7,settingsAlpha)*titleAlpha);
-		draw_sprite(sSettings,0,xMax-60,yMax-8);
-		draw_set_alpha(1);
+		
+		if settingsMenu draw_sprite_ext(sBack,0,xMax-72-guiXRight,yMax-8-oGUI.guiYBottom,2,2,0,c_white,lerp(0.4,0.7,settingsAlpha));
+		else {
+			draw_set_alpha(lerp(0.4,0.7,settingsAlpha)*titleAlpha);
+			draw_sprite(sSettings,0,xMax-72-guiXRight,yMax-8-oGUI.guiYBottom);
+			draw_set_alpha(1);
+		}
 	}
 	
 	if(!menuFadeOut) {
@@ -62,11 +66,13 @@ if(title) {
 			if !settingsMenu {
 				if(challengeCurrent == undefined or challengeCurrent == global.challengeID[j]) {
 					for(var i = 0; i < _num; i++) {
-						if((!MOBILE or mouse_check_button(mb_left)) and point_in_triangle(mouse_x,mouse_y,_xPos,_drawY,_xPos+lengthdir_x(_size,360/_num*i+_angle),_drawY+lengthdir_y(_size,360/_num*i+_angle),_xPos+lengthdir_x(_size,360/_num*(i+1)+_angle),_drawY+lengthdir_y(_size,360/_num*(i+1)+_angle))) {
+						if(point_in_triangle(mouse_x,mouse_y,_xPos,_drawY,_xPos+lengthdir_x(_size,360/_num*i+_angle),_drawY+lengthdir_y(_size,360/_num*i+_angle),_xPos+lengthdir_x(_size,360/_num*(i+1)+_angle),_drawY+lengthdir_y(_size,360/_num*(i+1)+_angle))) {
 							_pointIn = true;
 							break;
 						}
 					}
+					if !_pointIn menuAllow[j] = 1;
+					else if MOBILE and !menuAllow[j] _pointIn = false;
 				}
 			}
 		
@@ -128,10 +134,9 @@ if(title) {
 if(oGUI.start % 2) {
 	if(newrecord) {
 		draw_set_color(c_red);
-		draw_text(room_width/2,yMin+64,"NEW RECORD");
+		draw_text(room_width/2,yMin+64+oGUI.guiY,"NEW RECORD");
 	}
 }
 
-draw_set_alpha(lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
-draw_sprite(sBack,0,xMin+8,yMax-8);
-draw_set_alpha(1);
+var _scale = 1 + MOBILE
+draw_sprite_ext(sBack,0,xMin+8+guiXLeft,yMax-8-oGUI.guiYBottom,_scale,_scale,0,c_white,lerp(0.2,0.8,backAlpha)*(1-titleAlpha));
