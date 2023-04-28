@@ -8,6 +8,28 @@ global.leaderboardID = [
 "CgkInLT-qa4UEAIQAA",
 "CgkInLT-qa4UEAIQAQ"];
 
+global.achievementID = [[
+"CgkInLT-qa4UEAIQDA",
+"CgkInLT-qa4UEAIQCw",
+"CgkInLT-qa4UEAIQAw",
+"CgkInLT-qa4UEAIQBA",
+"CgkInLT-qa4UEAIQBQ",
+"CgkInLT-qa4UEAIQBg",
+"CgkInLT-qa4UEAIQBw",
+"CgkInLT-qa4UEAIQCA",
+"CgkInLT-qa4UEAIQCQ",
+"CgkInLT-qa4UEAIQCg"],[
+"CgkInLT-qa4UEAIQDQ",
+"CgkInLT-qa4UEAIQDg",
+"CgkInLT-qa4UEAIQDw",
+"CgkInLT-qa4UEAIQEA",
+"CgkInLT-qa4UEAIQEQ",
+"CgkInLT-qa4UEAIQEg",
+"CgkInLT-qa4UEAIQEw",
+"CgkInLT-qa4UEAIQFA",
+"CgkInLT-qa4UEAIQFQ",
+"CgkInLT-qa4UEAIQFg"]];
+
 #macro OPERA (os_type == os_operagx)
 #macro MOBILE (os_type == os_android or os_type == os_ios)
 #macro MAXLIVES 6
