@@ -10,7 +10,6 @@ global.leaderboardID = [
 
 global.achievementID = [[
 "CgkInLT-qa4UEAIQDA",
-"CgkInLT-qa4UEAIQCw",
 "CgkInLT-qa4UEAIQAw",
 "CgkInLT-qa4UEAIQBA",
 "CgkInLT-qa4UEAIQBQ",
@@ -20,7 +19,6 @@ global.achievementID = [[
 "CgkInLT-qa4UEAIQCQ",
 "CgkInLT-qa4UEAIQCg"],[
 "CgkInLT-qa4UEAIQDQ",
-"CgkInLT-qa4UEAIQDg",
 "CgkInLT-qa4UEAIQDw",
 "CgkInLT-qa4UEAIQEA",
 "CgkInLT-qa4UEAIQEQ",

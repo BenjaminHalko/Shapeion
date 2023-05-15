@@ -102,7 +102,7 @@ if(point_in_rectangle(mouse_x,mouse_y,xMin+8+guiXLeft,yMax-40-32*MOBILE-oGUI.gui
 
 if(keyboard_check_pressed(vk_backspace) and MOBILE) backToMenu();
 	
-if(keyboard_lastkey != -1) {
+if(keyboard_lastkey != -1 and os_type != os_android) {
 	if(keyboard_lastkey == secretCode[codeNum]) {
 		codeNum++;
 		if(array_length(secretCode) == codeNum) {
