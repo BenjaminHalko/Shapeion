@@ -72,7 +72,7 @@ for(var j = 0; j < array_length(shapes); j++) {
 	draw_set_color(c_white);
 	draw_line_shadow(_shapeArray);
 	setColorOpposite();
-	draw_line_shadow(_shapeArrayCol,4);
+	draw_line_shadow(_shapeArrayCol,5);
 	/*
 	for(var i = 0; i < array_length(_shapeArrayCol); i++) {
 		draw_line_width(_shapeArrayCol[i][0],_shapeArrayCol[i][1],_shapeArrayCol[i][2],_shapeArrayCol[i][3],4);

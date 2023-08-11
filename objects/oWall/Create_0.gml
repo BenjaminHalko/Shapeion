@@ -2,9 +2,9 @@ shapes = [];
 
 size = (120-20*global.hardMode)*sizeRatio;
 
-var _shapeArray = [3,4,6,5,8,7];
-var _soundArray = [snTriangle,snSquare,snHexagon,snPentagon,snOctagon,snSeptagon];
-var _shapeTextArray = ["TRIANGLE","SQUARE","HEXAGON","PENTAGON","OCTAGON","SEPTAGON"];
+var _shapeArray = [24,3,4,6,5,8,7];
+var _soundArray = [snCircle,snTriangle,snSquare,snHexagon,snPentagon,snOctagon,snSeptagon];
+var _shapeTextArray = ["CIRCLE","TRIANGLE","SQUARE","HEXAGON","PENTAGON","OCTAGON","SEPTAGON"];
 
 var _shapeNum = -1;
 
@@ -20,7 +20,7 @@ while(array_length(shapes) < min(5,2+(global.score >= 1000)+(global.score >= 300
 		_x = irandom_range(xMin+size,xMax-size);
 		_y = irandom_range(yMin+size,yMax-size);
 		
-		_index = irandom(min(5,3+(global.score >= 2000)+(global.score >= 8000)+global.hardMode*2));
+		_index = irandom(min(5,3+(global.score >= 500)+(global.score >= 2000)+(global.score >= 8000)+global.hardMode*2));
 		var _shape = _shapeArray[_index];
 		if(array_length(shapes) == 0) _shapeNum = _index;
 		

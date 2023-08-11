@@ -112,7 +112,7 @@ if(title) {
 			}
 		
 			setColorOpposite();
-			draw_line_shadow(_shapeArrayCol,4);
+			draw_line_shadow(_shapeArrayCol,5);
 			
 			// Settings
 			if settingsMenuAlpha != 0 {

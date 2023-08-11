@@ -29,6 +29,7 @@
     {"name":"snStart","order":3,"path":"sounds/snStart/snStart.yy",},
     {"name":"oAfter","order":2,"path":"objects/oAfter/oAfter.yy",},
     {"name":"snSquare","order":1,"path":"sounds/snSquare/snSquare.yy",},
+    {"name":"snCircle","order":6,"path":"sounds/snCircle/snCircle.yy",},
     {"name":"gxc_api_config","order":3,"path":"scripts/gxc_api_config/gxc_api_config.yy",},
     {"name":"snSeptagon","order":5,"path":"sounds/snSeptagon/snSeptagon.yy",},
   ],
