@@ -86,17 +86,15 @@ rectangles = [];
 
 alarm[0] = 1;
 
-if !OPERA {
-	if(os_browser != browser_not_a_browser) {
-		width = browser_width;
-		height = browser_height;
-		scale_canvas();
-	} else {
-		width = window_get_width();
-		height = window_get_height();
-		ResizeScreen();
-		if global.notched call_later(time_source_units_frames,1,function(){ConfigNotch(camera_get_view_width(view_camera[0]),camera_get_view_height(view_camera[0]))});
-	}
+if(os_browser != browser_not_a_browser or OPERA) {
+	width = browser_width;
+	height = browser_height;
+	scale_canvas();
+} else {
+	width = window_get_width();
+	height = window_get_height();
+	ResizeScreen(width,height);
+	if global.notched call_later(time_source_units_frames,1,function(){ConfigNotch(camera_get_view_width(view_camera[0]),camera_get_view_height(view_camera[0]))});
 }
 
 lastColor = c_black;

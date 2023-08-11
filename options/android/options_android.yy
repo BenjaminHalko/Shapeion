@@ -73,5 +73,5 @@
   "option_android_tv_banner": "tv_banner.png",
   "option_android_tv_isgame": true,
   "option_android_use_facebook": false,
-  "option_android_version": "1.0.0",
+  "option_android_version": "1.1.0",
 }

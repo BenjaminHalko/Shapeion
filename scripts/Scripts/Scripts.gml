@@ -36,11 +36,11 @@ function scale_canvas() {
 	window_set_size(_width, _height);
 	window_center();
 
-	ResizeScreen();
+	ResizeScreen(_width,_height);
 }
 
 function draw_line_shadow(_array,_width=3,_col=c_black) {
-	if(_col != c_black) 	for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+6,_col,_col);
+	if(_col != c_black) for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+6,_col,_col);
 	for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+4,c_black,c_black);
 	for(var i = 0; i < array_length(_array); i++) draw_line_width(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width);
 }
@@ -87,8 +87,8 @@ function ConfigNotch(_width,_height) {
 	}
 }
 
-function ResizeScreen() {
-	var _ratio = window_get_width()/window_get_height();
+function ResizeScreen(_baseWidth,_baseHeight) {
+	var _ratio = _baseWidth/_baseHeight;
 	
 	var _width, _height;
 	
@@ -102,7 +102,7 @@ function ResizeScreen() {
 	
 	ConfigNotch(_width,_height);
 	
-	if(_ratio == WIDTH/HEIGHT or window_get_width() <= 0 or window_get_height <= 0) return;
+	if(_ratio == WIDTH/HEIGHT or _baseWidth <= 0 or _baseHeight <= 0) return;
 	
 	camera_set_view_size(view_camera[0],_width,_height);
 	camera_set_view_pos(view_camera[0],480-_width/2,270-_height/2);

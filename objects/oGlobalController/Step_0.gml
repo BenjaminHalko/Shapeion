@@ -1,16 +1,14 @@
-if !OPERA {
-	if(os_browser != browser_not_a_browser) {
-		if(browser_width != width || browser_height != height) {
-			width = browser_width;
-			height = browser_height;
-			scale_canvas();
-		}
-	} else {
-		if(window_get_width() != width || window_get_height() != height) {
-			width = window_get_width();
-			height = window_get_height();
-			ResizeScreen();
-		}
+if(os_browser != browser_not_a_browser or OPERA) {
+	if(browser_width != width || browser_height != height) {
+		width = browser_width;
+		height = browser_height;
+		scale_canvas();
+	}
+} else {
+	if(window_get_width() != width || window_get_height() != height) {
+		width = window_get_width();
+		height = window_get_height();
+		ResizeScreen(width,height);
 	}
 }
 

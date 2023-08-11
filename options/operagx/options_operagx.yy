@@ -17,7 +17,7 @@
   "option_operagx_mod_team_id": "",
   "option_operagx_mod_team_name": "",
   "option_operagx_mod_version": "1.0.0.0",
-  "option_operagx_next_version": "0.0.0.29",
+  "option_operagx_next_version": "1.0.1.0",
   "option_operagx_publicShareUrl": "https://gxc.gg/games/3tyac9/shapeion/",
   "option_operagx_scale": 0,
   "option_operagx_team_id": "001cf107-345b-4227-b45e-d54580fe019c",
