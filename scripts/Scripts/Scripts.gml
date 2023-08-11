@@ -39,9 +39,9 @@ function scale_canvas() {
 	ResizeScreen();
 }
 
-function draw_line_shadow(_array,_width=2,_col=c_black) {
-	if(_col != c_black) 	for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+4,_col,_col);
-	for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+2,c_black,c_black);
+function draw_line_shadow(_array,_width=3,_col=c_black) {
+	if(_col != c_black) 	for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+6,_col,_col);
+	for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+4,c_black,c_black);
 	for(var i = 0; i < array_length(_array); i++) draw_line_width(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width);
 }
 

@@ -25,7 +25,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.4.0.84",
+    "IDEVersion": "2023.6.0.92",
   },
   "resources": [
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
@@ -60,6 +60,7 @@
     {"id":{"name":"snGameOver","path":"sounds/snGameOver/snGameOver.yy",},},
     {"id":{"name":"oAfter","path":"objects/oAfter/oAfter.yy",},},
     {"id":{"name":"snSquare","path":"sounds/snSquare/snSquare.yy",},},
+    {"id":{"name":"snCircle","path":"sounds/snCircle/snCircle.yy",},},
     {"id":{"name":"gxc_api_config","path":"scripts/gxc_api_config/gxc_api_config.yy",},},
     {"id":{"name":"snSeptagon","path":"sounds/snSeptagon/snSeptagon.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},

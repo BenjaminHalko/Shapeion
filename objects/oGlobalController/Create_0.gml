@@ -263,7 +263,7 @@ if os_type == os_android {
 					if _percent <= 0 break;
 				}
 			
-				draw_line_shadow(_shapeArrayCol,4);
+				draw_line_shadow(_shapeArrayCol,5);
 			}
 		}
 	}

@@ -9,7 +9,7 @@
   "option_operagx_internalShareUrl": "https://gxc.gg/games/3tyac9/shapeion/tracks/f08a0bc7-67b3-4530-bd4a-85659b579ee4/",
   "option_operagx_interpolate_pixels": false,
   "option_operagx_mod_editUrl": "",
-  "option_operagx_mod_game_name": "${project_name}",
+  "option_operagx_mod_game_name": "Shapeion",
   "option_operagx_mod_guid": "",
   "option_operagx_mod_internalShareUrl": "",
   "option_operagx_mod_next_version": "1.0.0.0",
