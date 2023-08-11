@@ -113,22 +113,22 @@ if(title) {
 		
 			setColorOpposite();
 			draw_line_shadow(_shapeArrayCol,5);
-			
-			// Settings
-			if settingsMenuAlpha != 0 {
-				draw_set_alpha(settingsMenuAlpha);
-				BGMSlider.draw();
-				LeaderboardButton.draw();
-				AchievementButton.draw();
-				PrivacyPolicyButton.draw();
-				draw_set_alpha(1);
-			}
-			
-			//Title
-			draw_sprite_ext(sTitle,1,room_width/2,room_height/2-50-(40+65*(width / height < 1.15)+20*(width / height < 0.7))*settingsMenuAlpha,4*_titleSize,4*_titleSize,0,make_color_hsv(_col,255,255),titleAlpha);
-			draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50-(40+65*(width / height < 1.15)+20*(width / height < 0.7))*settingsMenuAlpha,4*_titleSize,4*_titleSize,0,c_white,titleAlpha);
 		}
 	}
+	
+	// Settings
+	if settingsMenuAlpha != 0 {
+		draw_set_alpha(settingsMenuAlpha);
+		BGMSlider.draw();
+		LeaderboardButton.draw();
+		AchievementButton.draw();
+		PrivacyPolicyButton.draw();
+		draw_set_alpha(1);
+	}
+			
+	//Title
+	draw_sprite_ext(sTitle,1,room_width/2,room_height/2-50-(40+65*(width / height < 1.15)+20*(width / height < 0.7))*settingsMenuAlpha,4*_titleSize,4*_titleSize,0,make_color_hsv(_col,255,255),titleAlpha);
+	draw_sprite_ext(sTitle,0,room_width/2,room_height/2-50-(40+65*(width / height < 1.15)+20*(width / height < 0.7))*settingsMenuAlpha,4*_titleSize,4*_titleSize,0,c_white,titleAlpha);
 }
 
 if(oGUI.start % 2) {
