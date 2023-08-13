@@ -16,7 +16,7 @@ if(correct) {
 		array_push(_shapeArray,_lineArray);
 	}
 	draw_line_shadow(_shapeArray);
-	with(instance_create_layer(x,y,layer,oShapeAfter)) shapeArray = _shapeArray;
+	with(instance_create_depth(x,y,depth,oShapeAfter)) shapeArray = _shapeArray;
 	
 	percent += 0.03;
 }
