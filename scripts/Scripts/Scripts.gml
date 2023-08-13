@@ -136,3 +136,17 @@ function SubmitScore() {
 		}
 	}
 }
+
+function GetShapeSide(_x,_y,_size,_angle1,_angle2) {
+	var _angleDifference = _angle1-angle_difference(_angle1,_angle2)/2;
+	var _xSubtract = lengthdir_x(1,_angleDifference);
+	var _ySubtract = lengthdir_y(1,_angleDifference);
+	
+	var _x1 = _x+lengthdir_x(_size,_angle1)-_xSubtract;
+	var _y1 = _y+lengthdir_y(_size,_angle1)-_ySubtract;
+		
+	var _x2 = _x+lengthdir_x(_size,_angle2)-_xSubtract;
+	var _y2 = _y+lengthdir_y(_size,_angle2)-_ySubtract;
+	
+	return [_x1,_y1,_x2,_y2];
+}

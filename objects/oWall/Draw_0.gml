@@ -44,11 +44,11 @@ for(var j = 0; j < array_length(shapes); j++) {
 	var _shapeArrayCol = [];
 
 	for(var i = 0; i < shapes[j].num; i++) {
-		var _x = shapes[j].x+lengthdir_x(size,360/shapes[j].num*i+shapes[j].angle);
-		var _y = shapes[j].y+lengthdir_y(size,360/shapes[j].num*i+shapes[j].angle);
-		
-		var _x2 = shapes[j].x+lengthdir_x(size,360/shapes[j].num*(i+1)+shapes[j].angle);
-		var _y2 = shapes[j].y+lengthdir_y(size,360/shapes[j].num*(i+1)+shapes[j].angle);
+		var _lineArray = GetShapeSide(shapes[j].x,shapes[j].y,size,360/shapes[j].num*i+shapes[j].angle,360/shapes[j].num*(i+1)+shapes[j].angle);
+		var _x = _lineArray[0];
+		var _y = _lineArray[1];
+		var _x2 = _lineArray[2];
+		var _y2 = _lineArray[3];
 		
 		var _z = lerp(z,1,max(0,finalZ));
 		

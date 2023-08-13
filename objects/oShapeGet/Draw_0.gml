@@ -12,11 +12,11 @@ if(correct) {
 	
 	var _shapeArray = [];
 	for(var i = 0; i < num; i++) {
-		array_push(_shapeArray,[x+lengthdir_x(_size,360/num*i+_angle),y+lengthdir_y(_size,360/num*i+_angle),
-		x+lengthdir_x(_size,360/num*(i+1)+_angle),y+lengthdir_y(_size,360/num*(i+1)+_angle)]);
+		var _lineArray = GetShapeSide(x,y,_size,360/num*i+_angle,360/num*(i+1)+_angle);
+		array_push(_shapeArray,_lineArray);
 	}
 	draw_line_shadow(_shapeArray);
-	with(instance_create_depth(x,y,layer,oShapeAfter)) shapeArray = _shapeArray;
+	with(instance_create_layer(x,y,layer,oShapeAfter)) shapeArray = _shapeArray;
 	
 	percent += 0.03;
 }

@@ -79,17 +79,12 @@ if(title) {
 			if(global.hardMode == -1) menuPercent[j] = ApproachFade(menuPercent[j],_pointIn,0.035,0.7);
 		
 			for(var i = 0; i < _num; i++) {
-				var _x = _xPos+lengthdir_x(_size,360/_num*i+_angle);
-				var _y = _drawY+lengthdir_y(_size,360/_num*i+_angle);
-		
-				var _x2 = _xPos+lengthdir_x(_size,360/_num*(i+1)+_angle);
-				var _y2 = _drawY+lengthdir_y(_size,360/_num*(i+1)+_angle);
-		
-				array_push(_shapeArray,[_x,_y,_x2,_y2]);
+				var _lineArray = GetShapeSide(_xPos,_drawY,_size,360/_num*i+_angle,360/_num*(i+1)+_angle);
+				array_push(_shapeArray,_lineArray);
 		
 				if(menuPercent[j] > 1/_num*(_num-i-1)) {
 					var _percent = min(1,menuPercent[j]*_num-(_num-i-1));
-					array_push(_shapeArrayCol,[_x2,_y2,lerp(_x2,_x,_percent),lerp(_y2,_y,_percent)]);
+					array_push(_shapeArrayCol,[_lineArray[2],_lineArray[3],lerp(_lineArray[2],_lineArray[0],_percent),lerp(_lineArray[3],_lineArray[1],_percent)]);
 				}
 			
 				if(menuPercent[j] == 1 and global.hardMode == -1) {
