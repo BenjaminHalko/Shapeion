@@ -40,9 +40,21 @@ function scale_canvas() {
 }
 
 function draw_line_shadow(_array,_width=3,_col=c_black) {
-	if(_col != c_black) for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+6,_col,_col);
-	for(var i = 0; i < array_length(_array); i++) draw_line_width_color(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width+4,c_black,c_black);
-	for(var i = 0; i < array_length(_array); i++) draw_line_width(_array[i][0],_array[i][1],_array[i][2],_array[i][3],_width);
+	var _line; 
+	if(_col != c_black) {
+		for(var i = 0; i < array_length(_array); i++) {
+			_line = AdjustLine(_array[i],_width);
+			draw_line_width_color(_line[0],_line[1],_line[2],_line[3],_width+6,_col,_col);
+		}
+	}
+	for(var i = 0; i < array_length(_array); i++) {
+		_line = AdjustLine(_array[i],_width);
+		draw_line_width_color(_line[0],_line[1],_line[2],_line[3],_width+4,c_black,c_black);
+	}
+	for(var i = 0; i < array_length(_array); i++) {
+		_line = AdjustLine(_array[i],_width);
+		draw_line_width(_line[0],_line[1],_line[2],_line[3],_width);
+	}
 }
 
 function setColorOpposite() {
@@ -138,15 +150,24 @@ function SubmitScore() {
 }
 
 function GetShapeSide(_x,_y,_size,_angle1,_angle2) {
-	var _angleDifference = _angle1-angle_difference(_angle1,_angle2)/2;
-	var _xSubtract = lengthdir_x(1,_angleDifference);
-	var _ySubtract = lengthdir_y(1,_angleDifference);
-	
-	var _x1 = _x+lengthdir_x(_size,_angle1)-_xSubtract;
-	var _y1 = _y+lengthdir_y(_size,_angle1)-_ySubtract;
+	var _x1 = _x+lengthdir_x(_size,_angle2);
+	var _y1 = _y+lengthdir_y(_size,_angle2);
 		
-	var _x2 = _x+lengthdir_x(_size,_angle2)-_xSubtract;
-	var _y2 = _y+lengthdir_y(_size,_angle2)-_ySubtract;
+	var _x2 = _x+lengthdir_x(_size,_angle1);
+	var _y2 = _y+lengthdir_y(_size,_angle1);
 	
 	return [_x1,_y1,_x2,_y2];
+}
+
+function AdjustLine(_line,_width) {
+	var _dir = point_direction(_line[0],_line[1],_line[2],_line[3]);
+	var _subtractX = lengthdir_x(_width/5*2,_dir);
+	var _subtractY = lengthdir_y(_width/5*2,_dir);
+	
+	return [
+		_line[0]-_subtractX,
+		_line[1]-_subtractY,
+		_line[2]+_subtractX,
+		_line[3]+_subtractY
+	];
 }

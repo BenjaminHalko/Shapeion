@@ -65,7 +65,7 @@ for(var j = 0; j < array_length(shapes); j++) {
 		
 		if(shapes[j].percent > 1/shapes[j].num*(shapes[j].num-i-1)) {
 			var _percent = min(1,shapes[j].percent*shapes[j].num-(shapes[j].num-i-1));
-			array_push(_shapeArrayCol,[_x2Final,_y2Final,lerp(_x2Final,_xFinal,_percent),lerp(_y2Final,_yFinal,_percent)]);
+			array_push(_shapeArrayCol,[_xFinal,_yFinal,lerp(_xFinal,_x2Final,_percent),lerp(_yFinal,_y2Final,_percent)]);
 		}		
 	}
 	

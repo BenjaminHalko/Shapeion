@@ -84,7 +84,7 @@ if(title) {
 		
 				if(menuPercent[j] > 1/_num*(_num-i-1)) {
 					var _percent = min(1,menuPercent[j]*_num-(_num-i-1));
-					array_push(_shapeArrayCol,[_lineArray[2],_lineArray[3],lerp(_lineArray[2],_lineArray[0],_percent),lerp(_lineArray[3],_lineArray[1],_percent)]);
+					array_push(_shapeArrayCol,[_lineArray[0],_lineArray[1],lerp(_lineArray[0],_lineArray[2],_percent),lerp(_lineArray[1],_lineArray[3],_percent)]);
 				}
 			
 				if(menuPercent[j] == 1 and global.hardMode == -1) {

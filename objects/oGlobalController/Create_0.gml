@@ -217,8 +217,6 @@ if os_type == os_android {
 				setColorOpposite();
 				var _sidePercent = sideMargin / width;
 				var _dir = point_direction(0,0,sideMargin,-height/2);
-				var _alpha = draw_get_alpha();
-				draw_set_alpha(_alpha*0.5);
 				draw_triangle(x-width/2,y,x-width/2+min(sideMargin,percent*width),y-(min(1,percent*width/sideMargin)*height/2),x-width/2+min(sideMargin,percent*width),y+(min(1,percent*width/sideMargin)*height/2),false);
 				if percent >= _sidePercent draw_rectangle(x-width/2+sideMargin,y-height/2,lerp(x-width/2+sideMargin,x+width/2-sideMargin-1,median(0,1,(percent-_sidePercent)*(width/(width-sideMargin*2)))),y+height/2,false);
 				if percent >= 1 - _sidePercent {
@@ -229,7 +227,6 @@ if os_type == os_android {
 					draw_vertex(x+width/2-sideMargin*(1-percent)/_sidePercent,y-height/2*(percent-1)/_sidePercent);
 					draw_primitive_end();
 				}
-				draw_set_alpha(_alpha);
 			}
 		
 			draw_set_color(c_white);

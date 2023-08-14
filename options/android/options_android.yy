@@ -56,8 +56,8 @@
   "option_android_permission_read_phone_state": false,
   "option_android_permission_record_audio": false,
   "option_android_permission_write_external_storage": false,
-  "option_android_proguard_minifying": false,
-  "option_android_proguard_shrinking": false,
+  "option_android_proguard_minifying": true,
+  "option_android_proguard_shrinking": true,
   "option_android_scale": 0,
   "option_android_screen_depth": 1,
   "option_android_sleep_margin": 4,
@@ -73,5 +73,5 @@
   "option_android_tv_banner": "tv_banner.png",
   "option_android_tv_isgame": true,
   "option_android_use_facebook": false,
-  "option_android_version": "1.1.0",
+  "option_android_version": "1.1.1",
 }
