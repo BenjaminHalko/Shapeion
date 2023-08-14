@@ -58,7 +58,7 @@ function draw_line_shadow(_array,_width=3,_col=c_black) {
 }
 
 function setColorOpposite() {
-	var _col = color_get_hue(oGlobalController.currentColor)+128;
+	var _col = color_get_hue(merge_color(oGlobalController.lastColor,oGlobalController.currentColor,oGlobalController.colorPercent))+128;
 	if(_col > 255) _col -= 255;
 	draw_set_color(make_color_hsv(_col,255,255));
 }
