@@ -39,8 +39,9 @@ public class NOTCH
 
             
 
-            
-            if ( (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                myActivity.getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS;
+            } else if ( (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)){
                 
                 myActivity.getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
                     /*

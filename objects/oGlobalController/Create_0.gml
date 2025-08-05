@@ -175,7 +175,7 @@ if os_type == os_android {
 					} else if num == 2 {
 						GooglePlayServices_Achievements_Show();	
 					} else if num == 3 {
-						url_open("https://benjamin.halko.ca/google-play/shapeion/privacypolicy.html");	
+						url_open("https://benjaminhalko.dev/google-play/shapeion/privacypolicy.html");	
 					}
 					cooldown = true;
 				}

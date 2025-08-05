@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "gxc_api",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "GXC API",
-    "path": "folders/GXC API.yy",
+  "$GMScript":"v1",
+  "%Name":"gxc_api",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"gxc_api",
+  "parent":{
+    "name":"GXC API",
+    "path":"folders/GXC API.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
